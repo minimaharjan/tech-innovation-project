@@ -10,6 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
   },
-  "author": "",
+  "author": "TIP Group 1 - Daniel Flores, Dinanath Chathankandath , Mini Maharjan, Roshan Budhathoki, Zach Wilkinson",
   "license": "ISC"
 }
