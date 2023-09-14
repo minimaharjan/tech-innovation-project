@@ -2,6 +2,7 @@
 
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron');
+const isDev = require('electron-is-dev');
 const path = require('path');
 
 const isMac = process.platform === 'darwin';
@@ -9,16 +10,23 @@ const isMac = process.platform === 'darwin';
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    title: "Social Network Analysis",
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
-    }
+    },
+    show: false
   });
 
-  // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  if(isDev) {
+    // Development URL
+    mainWindow.loadURL('http://localhost:3000/')
+  } else {
+    mainWindow.loadFile("react-app/build/index.html")
+  }
+  
+  mainWindow.maximize()
+  mainWindow.show()
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -28,7 +36,11 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  createWindow()
+  /* TODO: Optimize this solution */
+  // Wait for 4 seconds to load the React Application
+  setTimeout(() => {
+    createWindow()
+  }, 4000);
 
   app.on('activate', () => {
     // On macOS it's common to re-create a window in the app when the
@@ -36,6 +48,7 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
+.catch(console.error);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
