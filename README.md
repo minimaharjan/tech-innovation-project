@@ -157,3 +157,12 @@ MIT © [Electron React Boilerplate](https://github.com/electron-react-boilerplat
 [github-tag-url]: https://github.com/electron-react-boilerplate/electron-react-boilerplate/releases/latest
 [stackoverflow-img]: https://img.shields.io/badge/stackoverflow-electron_react_boilerplate-blue.svg
 [stackoverflow-url]: https://stackoverflow.com/questions/tagged/electron-react-boilerplate
+
+
+## Package.json Update info
+Which package.json file to use
+Rule of thumb is: all modules go into ./package.json except for native modules, or modules with native dependencies or peer dependencies. Native modules, or packages with native dependencies should go into ./release/app/package.json.
+
+If the module is native to a platform (like node-postgres), it should be listed under dependencies in ./release/app/package.json
+If a module is imported by another module, include it in dependencies in ./package.json. See this ESLint rule. Examples of such modules are material-ui, redux-form, and moment.
+Otherwise, modules used for building, testing, and debugging should be included in devDependencies in ./package.json.
