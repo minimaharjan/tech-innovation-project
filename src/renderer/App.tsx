@@ -2,9 +2,10 @@ import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
 
-import { Container, Row, Col, Stack, Button } from 'react-bootstrap';
+import { Container, Row, Col, Stack, Button, Tabs, Tab } from 'react-bootstrap';
 
 import NetworkGraph from 'components/Graphs/NetworkGraph';
+import MenuTab from 'components/Menu/MenuTab';
 
 function MainPage() {
   const [showGraph, setGraphState] = useState(false);
@@ -12,26 +13,7 @@ function MainPage() {
   return (
       <Container fluid>
         <Row>
-          {/* Menu Selection */}
-          <Col>
-          {/* Use Tabs Here */}
-          <Stack gap={2} direction="horizontal">
-            <div className="p-2 border-end">Files</div>
-            <div className="p-2 border-end">Model Specification</div>
-            <div className="p-2 border-end">Settings</div>
-          </Stack>
-          </Col>
-        </Row>
-
-        <Row className="border-top">
-          <Col>
-            {/* Active Menu Drilled down menu */}
-            <Stack direction="horizontal">
-              <Button className="p-2" variant="outline-secondary rounded-0" size="sm">Load Project</Button>
-              <Button className="p-2" variant="outline-secondary rounded-0 border-start-0" size="sm">Save Project</Button>
-              <Button className="p-2" variant="outline-secondary rounded-0 border-start-0" size="sm">Export</Button>
-            </Stack>
-          </Col>
+          <MenuTab />
         </Row>
         
         <Row className="border-top p-0">
@@ -46,9 +28,9 @@ function MainPage() {
           <Col xs={8} className="p-2">
 
 
-            <Button onClick={() => setGraphState(!showGraph)}>Toggle Graph</Button>
+            <Button onClick={() => setGraphState(!showGraph)} size="sm">Toggle Graph</Button>
             {
-              showGraph && <NetworkGraph  />
+              showGraph && <NetworkGraph />
             }
 
           </Col>
