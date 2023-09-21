@@ -11,6 +11,10 @@ Start the app in the `dev` environment:
 ```bash
 npm start
 ```
+OR
+```bash
+yarn start
+```
 
 ## Packaging for Production
 
@@ -18,6 +22,10 @@ To package apps for the local platform:
 
 ```bash
 npm run package
+```
+OR
+```bash
+yarn run package
 ```
 
 ## Docs
