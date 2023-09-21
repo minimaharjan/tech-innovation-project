@@ -10,7 +10,7 @@ function MenuTab() {
         >
           <Tab eventKey="files" title="Files" className="mb-1">
             <Stack direction="horizontal">
-            <Button
+              <Button
                 className="p-2"
                 variant="outline-danger rounded-0 me-2"
                 size="sm">Start New Project</Button>
@@ -28,8 +28,24 @@ function MenuTab() {
                 size="sm">Export</Button>
             </Stack>
           </Tab>
+          <Tab eventKey="mode" title="Mode" className="text-dark">
+            Tab content for Mode
+          </Tab>
           <Tab eventKey="model" title="Model Specification" className="text-dark">
-            Tab content for Model Specification
+            <Stack direction="horizontal">
+              <Button
+                className="p-2"
+                variant="outline-danger rounded-0 me-2"
+                size="sm">Model Type</Button>
+              <Button
+                className="p-2"
+                variant="outline-danger rounded-0 me-2"
+                size="sm">Parameters</Button>
+              <Button
+                className="p-2"
+                variant="outline-danger rounded-0 me-2"
+                size="sm">Attributes</Button>
+            </Stack>
           </Tab>
           <Tab eventKey="settings" title="Settings">
             Tab content for Settings

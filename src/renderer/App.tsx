@@ -6,6 +6,7 @@ import { Container, Row, Col, Stack, Button, Tabs, Tab } from 'react-bootstrap';
 
 import NetworkGraph from 'components/Graphs/NetworkGraph';
 import MenuTab from 'components/Menu/MenuTab';
+import MenuLeftOptions from 'components/Menu/MenuLeftOptions';
 
 function MainPage() {
   const [showGraph, setGraphState] = useState(false);
@@ -19,11 +20,7 @@ function MainPage() {
         <Row className="border-top p-0">
           <Col xs={2} className="border-end">
             {/* Left Side Menu */}
-            <Stack gap={2}>
-              <div className="p-2">Simulation</div>
-              <div className="p-2">Estimation</div>
-              <div className="p-2">Bayesian</div>
-            </Stack>
+            <MenuLeftOptions />
           </Col>
           <Col xs={8} className="p-2">
 
