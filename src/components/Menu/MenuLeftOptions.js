@@ -1,4 +1,5 @@
 import { Accordion } from "react-bootstrap";
+import Simulation from "./Simulation";
 
 function MenuLeftOptions() {
     return (
@@ -6,7 +7,9 @@ function MenuLeftOptions() {
             <Accordion.Item eventKey="0">
                 <Accordion.Header style={{fontSize: ".9rem"}}>Simulation</Accordion.Header>
                 <Accordion.Body>
-                    Simulation Options
+                    
+                    <Simulation/>
+                    
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
