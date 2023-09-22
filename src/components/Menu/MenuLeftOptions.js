@@ -1,5 +1,7 @@
 import { Accordion } from "react-bootstrap";
 import Simulation from "./Simulation";
+import Estimation from "./Estimation";
+import Bayesian from "./Bayesian";
 
 function MenuLeftOptions() {
     return (
@@ -15,13 +17,13 @@ function MenuLeftOptions() {
             <Accordion.Item eventKey="1">
                 <Accordion.Header  style={{fontSize: ".9rem"}}>Estimation</Accordion.Header>
                 <Accordion.Body>
-                    Estimation Options
+                    <Estimation/>
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="2">
                 <Accordion.Header>Bayesian</Accordion.Header>
                 <Accordion.Body>
-                    Bayesian Options
+                   <Bayesian/>
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
