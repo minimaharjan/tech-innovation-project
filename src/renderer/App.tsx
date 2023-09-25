@@ -7,6 +7,7 @@ import { Container, Row, Col, Stack, Button, Tabs, Tab } from 'react-bootstrap';
 import NetworkGraph from 'components/Graphs/NetworkGraph';
 import MenuTab from 'components/Menu/MenuTab';
 import MenuLeftOptions from 'components/Menu/MenuLeftOptions';
+import NodeMenu from 'components/Body/NodeMenu';
 
 function MainPage() {
   const [showGraph, setGraphState] = useState(false);
@@ -16,13 +17,15 @@ function MainPage() {
         <Row>
           <MenuTab />
         </Row>
-        
+
         <Row className="border-top p-0">
-          <Col xs={2} className="border-end">
+          <Col xs={3} className="border-end">
             {/* Left Side Menu */}
-            <MenuLeftOptions />
+
+            <NodeMenu className="border-bottom" />
+
           </Col>
-          <Col xs={8} className="p-2">
+          <Col xs={6} className="p-2">
 
 
             <Button onClick={() => setGraphState(!showGraph)} size="sm">Toggle Graph</Button>
@@ -31,13 +34,9 @@ function MainPage() {
             }
 
           </Col>
-          <Col xs={2}>
+          <Col xs={3}>
             {/* Right Side Menu */}
-            <Stack gap={2} className="border-start">
-              <div className="p-2">Node Info</div>
-              <div className="p-2">Second item</div>
-              <div className="p-2">Third item</div>
-            </Stack>
+            <MenuLeftOptions />
           </Col>
         </Row>
       </Container>

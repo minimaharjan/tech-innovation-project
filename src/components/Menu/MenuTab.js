@@ -3,7 +3,7 @@ import { Tabs, Tab, Stack, Button } from 'react-bootstrap';
 function MenuTab() {
     return (
         <Tabs
-          defaultActiveKey="files"
+          defaultActiveKey="mode"
           transition={false}
           id="uncontrolled-tab-example"
           className="text-dark mb-1"
@@ -28,10 +28,10 @@ function MenuTab() {
                 size="sm">Export</Button>
             </Stack>
           </Tab>
-          <Tab eventKey="mode" title="Mode" className="text-dark">
+          <Tab eventKey="mode" title="Mode" className="text-dark mb-1">
             Tab content for Mode
           </Tab>
-          <Tab eventKey="model" title="Model Specification" className="text-dark">
+          <Tab eventKey="model" title="Model Specification" className="mb-1">
             <Stack direction="horizontal">
               <Button
                 className="p-2"
