@@ -3,15 +3,11 @@ import { Tabs, Tab, Stack, Button, Row, Col } from 'react-bootstrap';
 import MenuMainActionButtons from './MenuMainActionButtons';
 import UploadButton from 'components/General/UploadButton';
 import Papa from 'papaparse';
+import { CSVtoArray } from 'utils/utils'
 
 function MenuTab() {
-  const handleNetworkCSV = (file) => {
-    // TODO: ADD Support for xlsx and xls
-    Papa.parse(file, {
-      complete: function(result) {
-          console.log(result.data)
-      }
-    })
+  const  handleNetworkCSV = (file) => {
+    CSVtoArray(file)
   }
 
   return (
