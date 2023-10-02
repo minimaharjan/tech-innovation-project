@@ -18,10 +18,12 @@ function UploadButton(props) {
 
   return (
     <>
+      {/* Make required upload button */}
       <input
         ref={inputRef}
         accept={props.accept || '*'}
         className="d-none"
+        // required={props.required|| null}
         type="file"
         onChange={(e) => {handleUploadedFile(e)}}
       />

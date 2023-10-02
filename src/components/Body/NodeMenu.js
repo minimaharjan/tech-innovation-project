@@ -20,7 +20,7 @@ function NodeMenu (props) {
           value={networkA}
         />
       </InputGroup>
-      <InputGroup className="mb-3">
+      {/* <InputGroup className="mb-3">
         <InputGroup.Text id="networkb-node">Network B nodes</InputGroup.Text>
         <Form.Control
           type="number"
@@ -31,7 +31,7 @@ function NodeMenu (props) {
           onChange={(e) => setNetworkBNodes(e.target.value)}
           value={networkB}
         />
-      </InputGroup>
+      </InputGroup> */}
     </div>
   );
 }

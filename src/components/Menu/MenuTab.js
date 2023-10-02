@@ -5,9 +5,10 @@ import UploadButton from 'components/General/UploadButton';
 import Papa from 'papaparse';
 import { CSVtoArray } from 'utils/utils'
 
-function MenuTab() {
-  const  handleNetworkCSV = (file) => {
-    CSVtoArray(file)
+function MenuTab(props) {
+  const  handleNetworkCSV = async (file) => {
+    const networkData = await CSVtoArray(file)
+    props.onCSVLoad(networkData)
   }
 
   return (
@@ -71,7 +72,7 @@ function MenuTab() {
           <Tab eventKey="help" title="Help" disabled>
             Tab content for Help and Manual
           </Tab>
-        </Tabs>`
+        </Tabs>
       </Col>
       <Col className="border-start">
         <MenuMainActionButtons />
