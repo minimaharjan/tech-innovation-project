@@ -13,7 +13,7 @@ function CSVtoArray(file) {
   })
 }
 
-function structureNodes(data, excludedAttributes = [], attributeTypeList =[], categories, mainFeature) {
+function structureNodes(data, linkingAttribute, groupingAttribute, excludedAttributes = [], attributeTypeList =[], categories) {
   // excludedAttributes is use to not add attributes to node data if specified
   // attributeTypeList defines which attribute or coluuniqueVuniqueValues.filter((val) => val != undefined)alues.filter((val) => val != undefined)mn is of which type
 
@@ -24,36 +24,53 @@ function structureNodes(data, excludedAttributes = [], attributeTypeList =[], ca
     if(nodeIndex != 0) {
       data[0].forEach((attribute, attrIndex) => {
         node_data[attribute] = graphNode[attrIndex]
-        // Groupby attribute too needed along with main linking attribute
+        // id can be name or anything or index but will be used to define the source and target for edges
+        // Linking Attribute to create ties between nodes
+        if (attribute == linkingAttribute) {
+          node_data["id"] = graphNode[attrIndex];
+          node_data["name"] = graphNode[attrIndex];
+        }
 
-
-
-        if (attribute == "Country") {
+        // Grouping Attribute to distinguish different categories/groups
+        if (attribute == groupingAttribute) {
           node_data["category"] = graphNode[attrIndex]
         }
+
+        // attribute for sizing the node
         // if (attribute == 'AcademicPerformance') {
         //   node_data["symbolSize"] = graphNode[attrIndex]*0.4
         // }
       });
-      // id can be name or anything or index but will be used to define the source and target for edges
-      node_data["id"] = nodeIndex;
+      // node_data["id"] = nodeIndex;
 
       // attributes for node for graph Use Linking attribute
-      node_data["name"] = "aaas";
+      // Use this to show node data but have option to turn this off
+      // node_data["name"] = "aaas";
       // node_data["value"] =  100;
       // node_data["symbolSize"]= 20;
       // node_data["category"] = data[nodeIndex][]; /* Category Index */
       node_list.push(node_data);
     }
-    // data
-
   });
   console.log(node_list)
   return node_list;
 }
 
-function structureEdges() {
-
+function structureEdges(data) {
+  let edge_list = [];
+  data.forEach((edgeNodes, edgeIndex) => {
+    let edge_data = {
+      source: '',
+      target: ''
+    };
+    if(edgeIndex != 0) {
+      edge_data['source'] = edgeNodes[0];
+      edge_data['target'] = edgeNodes[1];
+      edge_list.push(edge_data);
+    }
+  });
+  console.log(edge_list);
+  return edge_list;
 }
 
 function generateUniqueValues(list, attrName) {
@@ -62,4 +79,9 @@ function generateUniqueValues(list, attrName) {
   return uniqueValues.filter((val) => val != undefined);
 }
 
-export { CSVtoArray, structureNodes, generateUniqueValues };
+export {
+  CSVtoArray,
+  structureNodes,
+  structureEdges,
+  generateUniqueValues
+};

@@ -8,23 +8,30 @@ import NetworkGraph from 'components/Graphs/NetworkGraph';
 import MenuTab from 'components/Menu/MenuTab';
 import MenuLeftOptions from 'components/Menu/MenuLeftOptions';
 import NodeMenu from 'components/Body/NodeMenu';
-import { structureNodes, CSVtoArray } from 'utils/utils'
+import { structureNodes, CSVtoArray, structureEdges } from 'utils/utils'
 import NetworkOptionSetModal from 'components/Body/NetworkOptionSetModal';
 
 
 function MainPage() {
   const [showGraph, setGraphState] = useState(false);
+  const [networkGraphData, setGraphData] = useState([]);
   const [graphNodes, setGraphNodes] = useState([]);
   const [graphDimensions, setGraphDimensions] = useState([]);
   const [graphEdges, setGraphEdges] = useState([]);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
 
   const setNetworkGraphOptions = (graphData: any) => {
+    setGraphData(graphData)
+    setNetworkGraphOptionSetModal(true)
+  }
 
-    // setNetworkGraphOptionSetModal(true)
-    // to select attribute, their typeand also attribute by which legend is shown
+  const displayGraph = (settings: any) => {
+    setGraphNodes(structureNodes(networkGraphData, 'Participant-ID', 'Country'));
+    setGraphEdges(structureEdges(settings.edgeData));
+    setNetworkGraphOptionSetModal(false);
+
+       // to select attribute, their type and also attribute by which legend is shown
     // also add a section to select edge list in this popup
-    setGraphNodes(structureNodes(graphData))
 
 
     // setGraphDimensions(graphData[0])
@@ -44,40 +51,41 @@ function MainPage() {
         </Row>
 
         <Row className="border-top p-0">
-          <Col xs={3} className="border-end">
+          {/* <Col xs={3} className="border-end"> */}
             {/* Left Side Menu */}
 
-            <NodeMenu className="border-bottom" />
+            {/* <NodeMenu className="border-bottom" />
 
-          </Col>
-          <Col xs={7} className="p-2">
+          </Col> */}
+          <Col xs={12} className="p-2">
 
 
             <Button onClick={() => setGraphState(!showGraph)} size="sm">Toggle Graph</Button>
             {
               showGraph && <NetworkGraph
                 nodes={graphNodes}
+                edges={graphEdges}
                 nodeGroupingAttribute="Country"
                 nodeLinkingAttribute="Participant-ID"
                 dimensions={graphDimensions}
+                emphasis={true}
                 />
             }
 
           </Col>
-          <Col xs={2}>
+          {/* <Col xs={2}> */}
           {/* // TODO: Make a component */}
 
             {/* Right Side Menu */}
-            <MenuLeftOptions />
-          </Col>
-
+            {/* <MenuLeftOptions /> */}
+          {/* </Col> */}
 
 
           <NetworkOptionSetModal
             show={showNetworkGraphOptionSetModal}
             onHide={() => setNetworkGraphOptionSetModal(false)}
+            onSave={(settings) => displayGraph(settings)}
           />
-
         </Row>
       </Container>
   );

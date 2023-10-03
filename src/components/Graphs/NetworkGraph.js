@@ -4,7 +4,6 @@ import test from './test.json'
 import * as echarts from 'echarts';
 import { generateUniqueValues } from 'utils/utils'
 
-console.log(test.for)
 
 // Make option for graph to apply proper graph data
 // Nodes need id by default when passing if does not exist
@@ -59,7 +58,7 @@ console.log(test.for)
 function NetworkGraph(props) {
   const option1 = {
     title: {
-      text: 'Network Graph',
+      // text: 'Network Graph',
       // subtext: 'Default layout',
       top: 'bottom',
       left: 'right'
@@ -82,9 +81,6 @@ function NetworkGraph(props) {
             show: true,
             name: 'Network Graph'
           },
-          dataView: {
-            show:true
-          },
           // User defined function button and tools
           // Start with word 'my' to define it
           // myhellotool: {
@@ -100,65 +96,43 @@ function NetworkGraph(props) {
       {
         // name: 'Network Graph',
         type: 'graph',
-        layout: 'force', /* Options: 'circular', 'force', 'none' */
+        layout: props.layout || 'force', /* Options: 'circular', 'force', 'none' */
         circular: {
           rotateLabel: true
         },
-        // zoom: 1,
         // Color of nodes
         // color: "#ff",
         force: {
           repulsion: 100
         },
         lineStyle: {
-          color: 'source',
+          // color: 'source',
           // curveness: 0.3
         },
         // symbol: 'triangle', /* 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none' */
         // Enable this if directed
         // edgeSymbol: ['circle', 'arrow'],
         data: props.nodes,
+        links: props.edges,
+        // Add this Option to show Links if user specifies
         emphasis: {
-          focus: 'adjacency',
+          disabled: !props.emphasis,
+          focus: 'adjacency', // 'self', 'series', 'adjacency'
+          blurScope: 'coordinateSystem',
           lineStyle: {
-            width: 10
+            width: 5
           }
         },
-          // links are based on index so map it
-        links: [
-          {
-            "source": "1",
-            "target": "5"
-          },
-          {
-            "source": "2",
-            "target": "3"
-          }
-        ],
         // Add weight for graph
         categories: generateUniqueValues(props.nodes, props.nodeGroupingAttribute).map(cat => {
           return {"name": cat}
         }),
-        // links: props.edges,
-        // data: test.nodes,
-        // links: test.links,
-        // categories: test.categories,
 
         roam: true,
         // label: {
         //   position: 'right',
         //   formatter: '{b}'
         // },
-        // lineStyle: {
-        //   color: 'source',
-        //   curveness: 0.3
-        // },
-        // emphasis: {
-        //   focus: 'adjacency',
-        //   lineStyle: {
-        //     width: 10
-        //   }
-        // }
       }
     ]
   };

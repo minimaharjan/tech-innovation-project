@@ -1,16 +1,31 @@
+import { useState } from 'react';
 import { Modal, Button } from "react-bootstrap";
 import UploadButton from "components/General/UploadButton";
+import { CSVtoArray } from 'utils/utils';
 
 function NetworkOptionSetModal (props) {
+  const [directed, setDirected] = useState(true);
+  const [linkingAttribute, setLinkingAttribute] = useState('');
+  const [groupingAttribute, setGroupingAttribute] = useState('')
+  const [edgeData, setEdgeData] =useState([])
+
   const handleNetworkEdgeCSV = async (file) => {
     const networkEdgeData = await CSVtoArray(file)
-    console.log(networkEdgeData)
-    // props.onCSVLoad(networkData)
+    setEdgeData(networkEdgeData)
+  }
+
+  const handleSettings = () => {
+    props.onSave({
+      directed, linkingAttribute, groupingAttribute, edgeData
+    })
   }
 
   return (
     <Modal
-      {...props}
+      show={props.show}
+      onHide={props.onHide}
+      backdrop="static"
+      keyboard={false}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -44,6 +59,7 @@ function NetworkOptionSetModal (props) {
           />
       </Modal.Body>
       <Modal.Footer>
+        <Button onClick={handleSettings}>Save Settings</Button>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
