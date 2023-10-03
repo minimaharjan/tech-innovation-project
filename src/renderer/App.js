@@ -20,12 +20,12 @@ function MainPage() {
   const [graphEdges, setGraphEdges] = useState([]);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
 
-  const setNetworkGraphOptions = (graphData: any) => {
+  const setNetworkGraphOptions = (graphData) => {
     setGraphData(graphData)
     setNetworkGraphOptionSetModal(true)
   }
 
-  const displayGraph = (settings: any) => {
+  const displayGraph = (settings) => {
     setGraphNodes(structureNodes(networkGraphData, 'Participant-ID', 'Country'));
     setGraphEdges(structureEdges(settings.edgeData));
     setNetworkGraphOptionSetModal(false);
