@@ -9,8 +9,9 @@ import NetworkGraph from 'components/Graphs/NetworkGraph';
 import MenuTab from 'components/Menu/MenuTab';
 import MenuLeftOptions from 'components/Menu/MenuLeftOptions';
 import NodeMenu from 'components/Body/NodeMenu';
-import { structureNodes, CSVtoArray, structureEdges } from 'utils/utils'
+import { structureNodes, CSVtoArray, structureEdges, httpCall } from 'utils/utils'
 import NetworkOptionSetModal from 'components/Body/NetworkOptionSetModal';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 function MainPage() {
@@ -29,12 +30,15 @@ function MainPage() {
     setNetworkGraphOptionSetModal(true)
   }
 
-  const displayGraph = (settings) => {
-    setGraphNodes(structureNodes(networkGraphData, settings.linkingAttribute, settings.groupingAttribute));
-    setGraphEdges(structureEdges(settings.edgeData));
+  const displayGraph = async (settings) => {
+    const nodeData = structureNodes(networkGraphData, settings.linkingAttribute, settings.groupingAttribute);
+    setGraphNodes(nodeData);
+    const edgeData = structureEdges(settings.edgeData);
+    setGraphEdges(edgeData);
     setGraphLinkingAttribute(settings.linkingAttribute);
     setGraphGroupingAttribute(settings.groupingAttribute);
     setIsGraphDirected(settings.directed);
+    await getGraphDetails(nodeData, edgeData, settings);
     setNetworkGraphOptionSetModal(false);
 
        // to select attribute, their type and also attribute by which legend is shown
@@ -47,6 +51,30 @@ function MainPage() {
     // set nodemain attribute dynamically
 
     // Select attribute to use as legend, attrbiutes to show and category type
+  }
+
+  const getGraphDetails = async (nodes, edges, settings) => {
+    console.log({
+      nodes,
+      edges,
+      directed: settings.directed,
+      linkAttribute: settings.linkingAttribute
+    })
+    await httpCall('http://localhost:5000/graph-stats',
+    'post',
+    {
+      nodes,
+      edges,
+      directed: settings.directed,
+      linkAttribute: settings.linkingAttribute
+    }).then((data) => {
+      console.log(data)
+    }).catch((err) => {
+      console.log(err)
+      toast.error('Error', {
+        position: toast.POSITION.TOP_CENTER
+      });
+    })
   }
 
 

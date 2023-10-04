@@ -25,6 +25,13 @@ function NetworkOptionSetModal (props) {
       return
     }
 
+    if (edgeData.length < 1) {
+      toast.error("Edge or Link Data is required", {
+        position: toast.POSITION.TOP_CENTER
+      });
+      return
+    }
+
 
     props.onSave({
       directed, linkingAttribute, groupingAttribute, edgeData

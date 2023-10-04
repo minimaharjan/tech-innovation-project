@@ -1,4 +1,5 @@
 import Papa from 'papaparse';
+import axios from 'axios';
 
 function CSVtoArray(file) {
   return new Promise((resolve, reject) => {
@@ -81,9 +82,24 @@ function generateUniqueValues(list, attrName) {
   return [];
 }
 
+function httpCall(url, method ='get', data) {
+  return new Promise((resolve, reject) => {
+    axios({
+      method,
+      url,
+      data
+    }).then((response) => {
+      resolve(response.data)
+    }).catch((err) => {
+      reject(err.response)
+    });
+  })
+}
+
 export {
   CSVtoArray,
   structureNodes,
   structureEdges,
-  generateUniqueValues
+  generateUniqueValues,
+  httpCall
 };
