@@ -1,6 +1,7 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import { Container, Row, Col, Button,  Modal } from 'react-bootstrap';
 

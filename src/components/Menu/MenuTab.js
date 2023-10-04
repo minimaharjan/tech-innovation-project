@@ -3,11 +3,16 @@ import { Tabs, Tab, Stack, Button, Row, Col } from 'react-bootstrap';
 import MenuMainActionButtons from './MenuMainActionButtons';
 import UploadButton from 'components/General/UploadButton';
 import Papa from 'papaparse';
-import { CSVtoArray } from 'utils/utils'
+import { toast, ToastContainer } from 'react-toastify';
+import { CSVtoArray } from 'utils/utils';
+
 
 function MenuTab(props) {
   const  handleNetworkCSV = async (file) => {
     const networkData = await CSVtoArray(file)
+    toast.success("Network Data uploaded successfully", {
+      position: toast.POSITION.TOP_CENTER
+    });
     props.onCSVLoad(networkData)
   }
 
@@ -40,6 +45,7 @@ function MenuTab(props) {
                 buttonTitle="Upload Network Data"
                 onSuccessFullUpload={handleNetworkCSV}
               />
+              <ToastContainer />
               <Button
                 className="p-2"
                 variant="outline-danger rounded-0"

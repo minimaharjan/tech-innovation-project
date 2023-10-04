@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Modal, Button, Form , Row, Col} from "react-bootstrap";
 import UploadButton from "components/General/UploadButton";
+import { toast, ToastContainer } from 'react-toastify';
 import { CSVtoArray } from 'utils/utils';
 
 function NetworkOptionSetModal (props) {
@@ -11,14 +12,16 @@ function NetworkOptionSetModal (props) {
 
   const handleSubmit = (event) => {
     if (!linkingAttribute) {
-      alert('Linking attribute is required')
+      toast.error("Linking attribute is required", {
+        position: toast.POSITION.TOP_CENTER
+      });
       return;
     }
     console.log({directed, linkingAttribute, groupingAttribute, edgeData})
-    // add validation for selection, can't be same and all
     if (groupingAttribute == linkingAttribute) {
-      // use Toast
-      alert('Grouping and Linking Attribute can\'t  be the same')
+      toast.error("Grouping and Linking Attribute can\'t  be the same", {
+        position: toast.POSITION.TOP_CENTER
+      });
       return
     }
 
