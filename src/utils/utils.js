@@ -32,7 +32,7 @@ function structureNodes(data, linkingAttribute, groupingAttribute, excludedAttri
         }
 
         // Grouping Attribute to distinguish different categories/groups
-        if (attribute == groupingAttribute) {
+        if (groupingAttribute && attribute == groupingAttribute) {
           node_data["category"] = graphNode[attrIndex]
         }
 
@@ -48,7 +48,6 @@ function structureNodes(data, linkingAttribute, groupingAttribute, excludedAttri
       // node_data["name"] = "aaas";
       // node_data["value"] =  100;
       // node_data["symbolSize"]= 20;
-      // node_data["category"] = data[nodeIndex][]; /* Category Index */
       node_list.push(node_data);
     }
   });
@@ -74,9 +73,12 @@ function structureEdges(data) {
 }
 
 function generateUniqueValues(list, attrName) {
-  const uniqueValues = [...new Set(list.map((item) => item[attrName]))];
-  console.log(uniqueValues.filter((val) => val != undefined))
-  return uniqueValues.filter((val) => val != undefined);
+  if (attrName) {
+    const uniqueValues = [...new Set(list.map((item) => item[attrName]))];
+    console.log(uniqueValues.filter((val) => val != undefined))
+    return uniqueValues.filter((val) => val != undefined);
+  }
+  return [];
 }
 
 export {

@@ -17,6 +17,8 @@ function MainPage() {
   const [networkGraphData, setGraphData] = useState([]);
   const [graphNodes, setGraphNodes] = useState([]);
   const [graphDimensions, setGraphDimensions] = useState([]);
+  const [graphLinkingAttribute, setGraphLinkingAttribute]= useState('');
+  const [graphGroupingAttribute, setGraphGroupingAttribute] = useState('');
   const [graphEdges, setGraphEdges] = useState([]);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
 
@@ -26,8 +28,10 @@ function MainPage() {
   }
 
   const displayGraph = (settings) => {
-    setGraphNodes(structureNodes(networkGraphData, 'Participant-ID', 'Country'));
+    setGraphNodes(structureNodes(networkGraphData, settings.linkingAttribute, settings.groupingAttribute));
     setGraphEdges(structureEdges(settings.edgeData));
+    setGraphLinkingAttribute(settings.linkingAttribute);
+    setGraphGroupingAttribute(settings.groupingAttribute);
     setNetworkGraphOptionSetModal(false);
 
        // to select attribute, their type and also attribute by which legend is shown
@@ -65,8 +69,8 @@ function MainPage() {
               showGraph && <NetworkGraph
                 nodes={graphNodes}
                 edges={graphEdges}
-                nodeGroupingAttribute="Country"
-                nodeLinkingAttribute="Participant-ID"
+                nodeGroupingAttribute={graphGroupingAttribute}
+                nodeLinkingAttribute={graphLinkingAttribute}
                 dimensions={graphDimensions}
                 emphasis={true}
                 />
@@ -80,12 +84,16 @@ function MainPage() {
             {/* <MenuLeftOptions /> */}
           {/* </Col> */}
 
-
+        {
+          showNetworkGraphOptionSetModal &&
           <NetworkOptionSetModal
             show={showNetworkGraphOptionSetModal}
             onHide={() => setNetworkGraphOptionSetModal(false)}
             onSave={(settings) => displayGraph(settings)}
+            graphAttributeList={networkGraphData[0]}
           />
+        }
+
         </Row>
       </Container>
   );

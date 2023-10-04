@@ -66,11 +66,11 @@ function NetworkGraph(props) {
     tooltip: {},
     // legend to be done by categories/binary/other attribute
     // Need Logical thinkign on that
-    legend: [
+    legend:
       {
+        show: !!props.nodeGroupingAttribute,
         data: generateUniqueValues(props.nodes, props.nodeGroupingAttribute)
-      }
-    ],
+      },
     // dimensions: props.dimensions,
     animationDuration: 1500,
     animationEasingUpdate: 'quinticInOut',
