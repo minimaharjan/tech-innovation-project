@@ -111,7 +111,7 @@ function NetworkGraph(props) {
         },
         // symbol: 'triangle', /* 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none' */
         // Enable this if directed
-        // edgeSymbol: ['circle', 'arrow'],
+        edgeSymbol: props.directed ? ['none', 'arrow']: ['none', 'none'],
         data: props.nodes,
         links: props.edges,
         // Add this Option to show Links if user specifies

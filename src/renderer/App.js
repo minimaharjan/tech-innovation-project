@@ -20,6 +20,7 @@ function MainPage() {
   const [graphLinkingAttribute, setGraphLinkingAttribute]= useState('');
   const [graphGroupingAttribute, setGraphGroupingAttribute] = useState('');
   const [graphEdges, setGraphEdges] = useState([]);
+  const [isGraphDirected, setIsGraphDirected] = useState(false);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
 
   const setNetworkGraphOptions = (graphData) => {
@@ -32,6 +33,7 @@ function MainPage() {
     setGraphEdges(structureEdges(settings.edgeData));
     setGraphLinkingAttribute(settings.linkingAttribute);
     setGraphGroupingAttribute(settings.groupingAttribute);
+    setIsGraphDirected(settings.directed);
     setNetworkGraphOptionSetModal(false);
 
        // to select attribute, their type and also attribute by which legend is shown
@@ -72,6 +74,7 @@ function MainPage() {
                 nodeGroupingAttribute={graphGroupingAttribute}
                 nodeLinkingAttribute={graphLinkingAttribute}
                 dimensions={graphDimensions}
+                directed={isGraphDirected}
                 emphasis={true}
                 />
             }
