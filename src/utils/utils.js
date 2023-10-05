@@ -4,6 +4,7 @@ import axios from 'axios';
 function CSVtoArray(file) {
   return new Promise((resolve, reject) => {
     Papa.parse(file, {
+      skipEmptyLines: true,
       complete: (result)  => {
         resolve(result.data)
       },
