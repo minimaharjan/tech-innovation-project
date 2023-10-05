@@ -9,11 +9,13 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import os from 'node:os';
+import { app, BrowserWindow, shell, ipcMain, session} from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import installExtension, { REDUX_DEVTOOLS } from 'electron-devtools-installer';
 
 class AppUpdater {
   constructor() {
@@ -61,6 +63,9 @@ const createWindow = async () => {
     await installExtensions();
   }
 
+  // const path = require('node:path')
+  // const os = require('node:os')
+
   const RESOURCES_PATH = app.isPackaged
     ? path.join(process.resourcesPath, 'assets')
     : path.join(__dirname, '../../assets');
@@ -68,6 +73,11 @@ const createWindow = async () => {
   const getAssetPath = (...paths: string[]): string => {
     return path.join(RESOURCES_PATH, ...paths);
   };
+
+  
+
+  
+  
 
   mainWindow = new BrowserWindow({
     show: false,
@@ -127,14 +137,29 @@ app.on('window-all-closed', () => {
   }
 });
 
+const reactDevToolsPath = path.join(
+  os.homedir(),
+  '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.28.4_0'
+)
+
 app
   .whenReady()
   .then(() => {
+    // await session.defaultSession.loadExtension(reactDevToolsPath);
+    installExtension(REDUX_DEVTOOLS)
+        .then((name) => console.log(`Added Extension:  ${name}`))
+        .catch((err) => console.log('An error occurred: ', err));
     createWindow();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
       if (mainWindow === null) createWindow();
     });
+    
   })
   .catch(console.log);
+
+  
+  
+  
+  
