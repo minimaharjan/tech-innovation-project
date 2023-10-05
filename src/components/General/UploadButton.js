@@ -1,8 +1,10 @@
 import { Button } from 'react-bootstrap'
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 function UploadButton(props) {
   const inputRef = useRef(null);
+
+  const [fileName, setFileName] = useState('');
 
   const handleUpload = () => {
     inputRef.current.value = ""
@@ -12,6 +14,9 @@ function UploadButton(props) {
   const handleUploadedFile = (e) => {
     if (inputRef.current?.files && inputRef.current?.files.length) {
       const uploaded_file = inputRef.current?.files[0];
+      if(props.showFileName) {
+        setFileName(inputRef.current?.files[0].name)
+      }
       props.onSuccessFullUpload(uploaded_file)
     }
   }
@@ -36,6 +41,10 @@ function UploadButton(props) {
         >
         {props.buttonTitle || 'Upload'}
       </Button>
+      {
+        props.showFileName &&
+        <span>{fileName}</span>
+      }
     </>
   );
 }

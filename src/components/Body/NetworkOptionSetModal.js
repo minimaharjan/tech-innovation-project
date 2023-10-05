@@ -123,6 +123,7 @@ function NetworkOptionSetModal (props) {
             accept=".csv"
             buttonTitle="Upload Network Edge/Link Data"
             onSuccessFullUpload={handleNetworkEdgeCSV}
+            showFileName={true}
           />
         </div>
 
