@@ -49,16 +49,13 @@ function structureNodes(data, linkingAttribute, groupingAttribute, labellingAttr
         //   node_data["symbolSize"] = graphNode[attrIndex]*0.4
         // }
       });
-      // node_data["id"] = nodeIndex;
 
-      // attributes for node for graph Use Linking attribute
-      // Use this to show node data but have option to turn this off
-      // node_data["name"] = "aaas";
       // node_data["value"] =  100;
       // node_data["symbolSize"]= 20;
       node_list.push(node_data);
     }
   });
+
   console.log(node_list)
   return node_list;
 }

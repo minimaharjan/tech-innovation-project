@@ -3,6 +3,10 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 
+ html, body, #root {
+  height: 100%;
+ }
+
  .nav-link {
     color: black;
  }

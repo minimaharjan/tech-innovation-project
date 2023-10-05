@@ -4,49 +4,6 @@ import test from './test.json'
 import * as echarts from 'echarts';
 import { generateUniqueValues } from 'utils/utils'
 
-
-// Make option for graph to apply proper graph data
-// Nodes need id by default when passing if does not exist
-
-// Option for Showing all nodes and labels
-// const option0 = {
-//     tooltip: {},
-//     legend: [
-//       {
-//         data: test.categories.map(function (a) {
-//           return a.name;
-//         })
-//       }
-//     ],
-//     series: [
-//       {
-//         name: 'Les Miserables',
-//         type: 'graph',
-//         layout: 'none',
-//         data: test.nodes,
-//         links: test.links,
-//         categories: test.categories,
-//         roam: true,
-//         label: {
-//           show: true,
-//           position: 'right',
-//           formatter: '{b}'
-//         },
-//         labelLayout: {
-//           hideOverlap: true
-//         },
-//         scaleLimit: {
-//           min: 0.4,
-//           max: 2
-//         },
-//         lineStyle: {
-//           color: 'source',
-//           curveness: 0.3
-//         }
-//       }
-//     ]
-//   };
-
 // Option for Seeing Cluster and Connection
 // It shows only major labels
 // test.nodes.forEach(node => {
@@ -58,8 +15,6 @@ import { generateUniqueValues } from 'utils/utils'
 function NetworkGraph(props) {
   const option1 = {
     title: {
-      // text: 'Network Graph',
-      // subtext: 'Default layout',
       top: 'bottom',
       left: 'right'
     },
@@ -94,7 +49,7 @@ function NetworkGraph(props) {
     },
     series: [
       {
-        // name: 'Network Graph',
+        name: 'Node',
         type: 'graph',
         layout: props.layout || 'force', /* Options: 'circular', 'force', 'none' */
         circular: {
@@ -103,7 +58,9 @@ function NetworkGraph(props) {
         // Color of nodes
         // color: "#ff",
         force: {
-          repulsion: 100
+          edgeLength: 200,
+          repulsion: 1000,
+          gravity: 1
         },
         lineStyle: {
           // color: 'source',

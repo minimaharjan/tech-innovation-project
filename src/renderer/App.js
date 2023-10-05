@@ -81,13 +81,13 @@ function MainPage() {
 
 
   return (
-      <Container fluid>
+      <Container fluid className="h-100 d-flex flex-column">
         <Row>
           <MenuTab
             onCSVLoad={setNetworkGraphOptions}/>
         </Row>
 
-        <Row className="border-top p-0">
+        <Row className="border-top p-0 h-100">
           {/* <Col xs={3} className="border-end"> */}
             {/* Left Side Menu */}
 
