@@ -14,7 +14,7 @@ function CSVtoArray(file) {
   })
 }
 
-function structureNodes(data, linkingAttribute, groupingAttribute, excludedAttributes = [], attributeTypeList =[], categories) {
+function structureNodes(data, linkingAttribute, groupingAttribute, labellingAttribute, excludedAttributes = [], attributeTypeList =[], categories) {
   // excludedAttributes is use to not add attributes to node data if specified
   // attributeTypeList defines which attribute or coluuniqueVuniqueValues.filter((val) => val != undefined)alues.filter((val) => val != undefined)mn is of which type
 
@@ -29,6 +29,12 @@ function structureNodes(data, linkingAttribute, groupingAttribute, excludedAttri
         // Linking Attribute to create ties between nodes
         if (attribute == linkingAttribute) {
           node_data["id"] = graphNode[attrIndex];
+          // Name can be used to add node details
+          node_data["name"] = graphNode[attrIndex];
+        }
+
+        // If labelling attribute is present replace name with labellingAttribute value
+        if (attribute == labellingAttribute) {
           node_data["name"] = graphNode[attrIndex];
         }
 

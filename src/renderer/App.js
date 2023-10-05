@@ -21,6 +21,7 @@ function MainPage() {
   const [graphDimensions, setGraphDimensions] = useState([]);
   const [graphLinkingAttribute, setGraphLinkingAttribute]= useState('');
   const [graphGroupingAttribute, setGraphGroupingAttribute] = useState('');
+  const [graphLabellingAttribute, setGraphLabellingAttribute] = useState('')
   const [graphEdges, setGraphEdges] = useState([]);
   const [isGraphDirected, setIsGraphDirected] = useState(false);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
@@ -31,13 +32,14 @@ function MainPage() {
   }
 
   const displayGraph = async (settings) => {
-    const nodeData = structureNodes(networkGraphData, settings.linkingAttribute, settings.groupingAttribute);
+    const nodeData = structureNodes(networkGraphData, settings.linkingAttribute, settings.groupingAttribute, settings.labellingAttribute);
     setGraphNodes(nodeData);
     const edgeData = structureEdges(settings.edgeData);
     setGraphEdges(edgeData);
     setGraphLinkingAttribute(settings.linkingAttribute);
     setGraphGroupingAttribute(settings.groupingAttribute);
     setIsGraphDirected(settings.directed);
+    setGraphLabellingAttribute(settings.labellingAttribute)
     await getGraphDetails(nodeData, edgeData, settings);
     setNetworkGraphOptionSetModal(false);
 

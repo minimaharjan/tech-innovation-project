@@ -7,7 +7,8 @@ import { CSVtoArray } from 'utils/utils';
 function NetworkOptionSetModal (props) {
   const [directed, setDirected] = useState(false);
   const [linkingAttribute, setLinkingAttribute] = useState('');
-  const [groupingAttribute, setGroupingAttribute] = useState('')
+  const [groupingAttribute, setGroupingAttribute] = useState('');
+  const [labellingAttribute, setLabellingAttribute] = useState('');
   const [edgeData, setEdgeData] =useState([])
 
   const handleSubmit = (event) => {
@@ -34,7 +35,7 @@ function NetworkOptionSetModal (props) {
 
 
     props.onSave({
-      directed, linkingAttribute, groupingAttribute, edgeData
+      directed, linkingAttribute, groupingAttribute, edgeData, labellingAttribute
     })
   };
 
@@ -72,7 +73,7 @@ function NetworkOptionSetModal (props) {
           <Row className="mb-3">
             <Form.Label className="ps-0">Select Node Linking Attribute/Column</Form.Label>
             <Form.Select
-              size="sm"onChange={(e) => setGroupingAttribute(e.target.value)}
+              size="sm"
               value={linkingAttribute}
               onChange={(e) => setLinkingAttribute(e.target.value)}
               >
@@ -96,6 +97,21 @@ function NetworkOptionSetModal (props) {
                 props.graphAttributeList
                   .map((attr, index) =>
                   <option key={index} value={attr}>{attr}</option>
+                )
+              }
+            </Form.Select>
+          </Row>
+          <Row className="mb-3">
+            <Form.Label className="ps-0">Select Label Column for Nodes <span style={{color:'red'}}>(Optional)</span></Form.Label>
+            <Form.Select
+              size="sm"
+              value={labellingAttribute}
+              onChange={(e) => setLabellingAttribute(e.target.value)}
+              >
+                <option value="" className="d-none"></option>
+              {
+                props.graphAttributeList.map((attr, index) =>
+                  <option key={index}>{attr}</option>
                 )
               }
             </Form.Select>
