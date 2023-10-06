@@ -12,7 +12,7 @@ import NodeMenu from 'components/Body/NodeMenu';
 import { structureNodes, CSVtoArray, structureEdges, httpCall } from 'utils/utils'
 import NetworkOptionSetModal from 'components/Body/NetworkOptionSetModal';
 import { toast, ToastContainer } from 'react-toastify';
-
+import { AppProvider } from "../context/Provider.js";
 
 function MainPage() {
   const [showGraph, setGraphState] = useState(false);
@@ -135,10 +135,12 @@ function MainPage() {
 
 export default function App() {
   return (
+   
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
+   
   );
 }
