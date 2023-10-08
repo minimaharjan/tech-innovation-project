@@ -62,7 +62,7 @@ function MainPage() {
       directed: settings.directed,
       linkAttribute: settings.linkingAttribute
     })
-    await httpCall('http://127.0.0.1:5000/graph-stats',
+    await httpCall('/graph-stats',
     'post',
     {
       nodes,

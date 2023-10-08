@@ -91,7 +91,8 @@ function httpCall(url, method ='get', data) {
     axios({
       method,
       url,
-      data
+      data,
+      baseURL: 'https://quiet-savannah-81705-e4585e92eda0.herokuapp.com'
     }).then((response) => {
       resolve(response.data)
     }).catch((err) => {
