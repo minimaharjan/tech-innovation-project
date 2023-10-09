@@ -6,15 +6,16 @@ export const initialState = {
     
 };
 
-export const actions = {
 
-}
 
 const reducer = (state=initialState, action) => {
   console.log(action);
   switch(action.type) {
-    case 'SETSIMULATION':
-      return { ...state, modeOption: 'option1' };
+    case 'SETMODE':
+      return { 
+        ...state, 
+        modeOption:action.payload, 
+    };
     
     default:
       return state;

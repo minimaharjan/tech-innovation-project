@@ -29,8 +29,9 @@ function ERGMActions() {
       actionName: "Bayesiam estimation"
     },
   }
-  const handleSimulation = () => {
-    dispatch({ type: 'SETSIMULATION' });
+  const handleMode = (value) => {
+    dispatch({ type: 'SETMODE', payload: value, });
+    
   };
 
 
@@ -46,7 +47,7 @@ function ERGMActions() {
           id="inline-radio-1"
           value="option1"
           checked={selectedOption === 'option1'}
-          onChange={(e) => handleSimulation(e.target.value)}
+          onChange={(e) => handleMode(e.target.value)}
         />
         <Form.Check
           inline
