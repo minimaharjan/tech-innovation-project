@@ -29,16 +29,31 @@
 //   };
 
 import React, { createContext, useContext, useReducer } from "react";
+import reducer from "./reducer";
 
 // Prepares the dataLayer
 export const AppContext = createContext();
 
-// Wrap our app and provide the Data layer
-export const AppProvider = ({ reducer, initialState, children }) => (
-  <AppContext.Provider value={useReducer(reducer, initialState)}>
-    {children}
-  </AppContext.Provider>
-);
+// // Wrap our app and provide the Data layer
+// export const AppProvider = ({ reducer, initialState, children }) => (
+//   // const [state, dispatch] = useReducer(appReducer, initialState);
+//   <AppContext.Provider value={useReducer(reducer, initialState)}>
+//     {children}
+//   </AppContext.Provider>
+// );
+// Create a provider component
+export const AppProvider = ({ initialState, children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <AppContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AppContext.Provider>
+  );
+};
 
 // Pull information from the data layer
-export const useStateValue = () => useContext(StateContext);
+// export const useStateValue = () => useContext(StateContext);
+export const useAppContext = () => {
+  return useContext(AppContext);
+};

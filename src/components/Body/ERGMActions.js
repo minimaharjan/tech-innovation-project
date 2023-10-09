@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
+import { useAppContext } from "context/Provider";
 
 function ERGMActions() {
-  const [selectedOption, setOption] = useState("option2");
+  const { state, dispatch } = useAppContext();
+  
+
+  const [selectedOption, setOption] = useState("option1");
+  useEffect(() => {
+    setOption(state?.modeOption)
+  }, [state?.modeOption]);
+  
   const actionList = {
     option1: {
       id: 1,
@@ -21,6 +29,9 @@ function ERGMActions() {
       actionName: "Bayesiam estimation"
     },
   }
+  const handleSimulation = () => {
+    dispatch({ type: 'SETSIMULATION' });
+  };
 
 
   return (
@@ -35,7 +46,7 @@ function ERGMActions() {
           id="inline-radio-1"
           value="option1"
           checked={selectedOption === 'option1'}
-          onChange={(e) => setOption(e.target.value)}
+          onChange={(e) => handleSimulation(e.target.value)}
         />
         <Form.Check
           inline

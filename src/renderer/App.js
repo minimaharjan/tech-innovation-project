@@ -12,9 +12,11 @@ import NodeMenu from 'components/Body/NodeMenu';
 import { structureNodes, CSVtoArray, structureEdges, httpCall } from 'utils/utils'
 import NetworkOptionSetModal from 'components/Body/NetworkOptionSetModal';
 import { toast, ToastContainer } from 'react-toastify';
-import { AppProvider } from "../context/Provider.js";
+import { useAppContext } from "./../context/Provider";
+import ModeModal from 'components/Body/ModeModal';
 
 function MainPage() {
+  const { state, dispatch } = useAppContext();
   const [showGraph, setGraphState] = useState(false);
   const [networkGraphData, setGraphData] = useState([]);
   const [graphNodes, setGraphNodes] = useState([]);
@@ -25,6 +27,7 @@ function MainPage() {
   const [graphEdges, setGraphEdges] = useState([]);
   const [isGraphDirected, setIsGraphDirected] = useState(false);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
+
 
   const setNetworkGraphOptions = (graphData) => {
     setGraphData(graphData)
@@ -85,7 +88,9 @@ function MainPage() {
         <Row>
           <MenuTab
             onCSVLoad={setNetworkGraphOptions}/>
+            
         </Row>
+        
 
         <Row className="border-top p-0">
           {/* <Col xs={3} className="border-end"> */}
@@ -126,6 +131,14 @@ function MainPage() {
             onSave={(settings) => displayGraph(settings)}
             graphAttributeList={networkGraphData[0]}
           />
+        }
+        {
+          state.modeOption === 'option1' ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="Simulation"
+            />
+          ):[]
         }
 
         </Row>
