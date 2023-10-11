@@ -12,9 +12,11 @@ import NodeMenu from 'components/Body/NodeMenu';
 import { structureNodes, CSVtoArray, structureEdges, httpCall } from 'utils/utils'
 import NetworkOptionSetModal from 'components/Body/NetworkOptionSetModal';
 import { toast, ToastContainer } from 'react-toastify';
-
+import { useAppContext } from "./../context/Provider";
+import ModeModal from 'components/Body/ModeModal';
 
 function MainPage() {
+  const { state, dispatch } = useAppContext();
   const [showGraph, setGraphState] = useState(false);
   const [networkGraphData, setGraphData] = useState([]);
   const [graphNodes, setGraphNodes] = useState([]);
@@ -25,6 +27,7 @@ function MainPage() {
   const [graphEdges, setGraphEdges] = useState([]);
   const [isGraphDirected, setIsGraphDirected] = useState(false);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
+
 
   const setNetworkGraphOptions = (graphData) => {
     setGraphData(graphData)
@@ -85,7 +88,9 @@ function MainPage() {
         <Row>
           <MenuTab
             onCSVLoad={setNetworkGraphOptions}/>
+            
         </Row>
+        
 
         <Row className="border-top p-0 h-100">
           {/* <Col xs={3} className="border-end"> */}
@@ -127,6 +132,33 @@ function MainPage() {
             graphAttributeList={networkGraphData[0]}
           />
         }
+        {
+          state.modeOption === 'option1'  ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="Simulation"
+            />
+          ):[]}
+          {state.modeOption === 'option2' ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="Estimation"
+            />
+          ):[]}
+          {state.modeOption === 'option3' ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="GOF"
+            />
+          ):[]}
+
+          {state.modeOption === 'option4' ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="Bayesian Estimation"
+            />
+          ):[]}
+        
 
         </Row>
       </Container>
@@ -135,10 +167,12 @@ function MainPage() {
 
 export default function App() {
   return (
+   
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
+   
   );
 }
