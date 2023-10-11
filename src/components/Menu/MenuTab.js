@@ -20,7 +20,7 @@ function MenuTab(props) {
     <Row className="pe-0">
       <Col>
         <Tabs
-          defaultActiveKey="mode"
+          defaultActiveKey="files"
           transition={false}
           id="uncontrolled-tab-example"
           className="text-dark mb-1"
