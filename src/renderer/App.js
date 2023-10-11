@@ -138,8 +138,27 @@ function MainPage() {
             modeOption={state.modeOption}
             title="Simulation"
             />
-          ):[]
-        }
+          ):[]}
+          {state.modeOption === 'option2' ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="Estimation"
+            />
+          ):[]}
+          {state.modeOption === 'option3' ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="GOF"
+            />
+          ):[]}
+
+          {state.modeOption === 'option4' ? (
+            <ModeModal
+            modeOption={state.modeOption}
+            title="Bayesian Estimation"
+            />
+          ):[]}
+        
 
         </Row>
       </Container>

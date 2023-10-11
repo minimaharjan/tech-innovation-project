@@ -7,6 +7,7 @@ function ERGMActions() {
   
 
   const [selectedOption, setOption] = useState("option1");
+  
   useEffect(() => {
     setOption(state?.modeOption)
   }, [state?.modeOption]);
@@ -30,6 +31,7 @@ function ERGMActions() {
     },
   }
   const handleMode = (value) => {
+    console.log(value)
     dispatch({ type: 'SETMODE', payload: value, });
     
   };
@@ -57,7 +59,7 @@ function ERGMActions() {
           id="inline-radio-2"
           value="option2"
           checked={selectedOption === 'option2'}
-          onChange={(e) => setOption(e.target.value)}
+          onChange={(e) => handleMode(e.target.value)}
         />
         <Form.Check
           inline
@@ -67,7 +69,7 @@ function ERGMActions() {
           id="inline-radio-3"
           value="option3"
           checked={selectedOption === 'option3'}
-          onChange={(e) => setOption(e.target.value)}
+          onChange={(e) => handleMode(e.target.value)}
         />
         <Form.Check
           inline
@@ -77,7 +79,7 @@ function ERGMActions() {
           id="inline-radio-4"
           value="option4"
           checked={selectedOption === 'option4'}
-          onChange={(e) => setOption(e.target.value)}
+          onChange={(e) => handleMode(e.target.value)}
         />
       </div>
     </Form>
