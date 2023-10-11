@@ -137,6 +137,7 @@ function MainPage() {
             <ModeModal
             modeOption={state.modeOption}
             title="Simulation"
+            // showModeModal={state.showModeModal}
             />
           ):[]}
           {state.modeOption === 'option2' ? (

@@ -3,6 +3,7 @@ export const initialState = {
     error:false,
     errorMessages:'',
     modeOption: "",
+    // showModeModal: false,
     
 };
 
@@ -14,7 +15,8 @@ const reducer = (state=initialState, action) => {
     case 'SETMODE':
       return { 
         ...state, 
-        modeOption:action.payload, 
+        modeOption:action.payload,
+        // showModeModal: action.showModeModal, 
     };
     
     default:
