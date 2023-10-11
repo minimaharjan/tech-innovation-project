@@ -66,6 +66,7 @@ function MainPage() {
       directed: settings.directed,
       linkAttribute: settings.linkingAttribute
     })
+    const toast_id = toast.loading("Saving Settings...")
     await httpCall('/graph-stats',
     'post',
     {
@@ -74,6 +75,13 @@ function MainPage() {
       directed: settings.directed,
       linkAttribute: settings.linkingAttribute
     }).then((data) => {
+      toast.update(toast_id, {
+        render: "Settings Saved",
+        type: "success",
+        isLoading: false,
+        autoClose: true,
+        closeButton: true
+      });
       console.log(data)
     }).catch((err) => {
       console.log(err)
@@ -97,7 +105,7 @@ function MainPage() {
 
 
   return (
-      <Container fluid cclasslassName="h-100 d-flex flex-column pe-0">
+      <Container fluid className="h-100 d-flex flex-column pe-0">
         <Row>
           <MenuTab
             onCSVLoad={setNetworkGraphOptions}
