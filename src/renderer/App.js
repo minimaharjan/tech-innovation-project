@@ -17,7 +17,7 @@ import ModeModal from 'components/Body/ModeModal';
 
 function MainPage() {
   const { state, dispatch } = useAppContext();
-  const [showGraph, setGraphState] = useState(false);
+  const [showGraph, setShowGraphState] = useState(false);
   const [networkGraphData, setGraphData] = useState([]);
   const [graphNodes, setGraphNodes] = useState([]);
   const [graphDimensions, setGraphDimensions] = useState([]);
@@ -45,6 +45,7 @@ function MainPage() {
     setGraphLabellingAttribute(settings.labellingAttribute)
     await getGraphDetails(nodeData, edgeData, settings);
     setNetworkGraphOptionSetModal(false);
+    setShowGraphState(true);
 
        // to select attribute, their type and also attribute by which legend is shown
     // also add a section to select edge list in this popup
@@ -82,15 +83,29 @@ function MainPage() {
     })
   }
 
+  const clearNetworkGraph = () => {
+    // Restore to Default Value
+    setShowGraphState(false);
+    setGraphData([]);
+    setGraphNodes([]);
+    setGraphEdges([]);
+    setGraphLinkingAttribute('');
+    setGraphGroupingAttribute('');
+    setGraphLabellingAttribute('');
+    setIsGraphDirected(false);
+  }
+
 
   return (
-      <Container fluid className="h-100 d-flex flex-column">
+      <Container fluid cclasslassName="h-100 d-flex flex-column pe-0">
         <Row>
           <MenuTab
-            onCSVLoad={setNetworkGraphOptions}/>
-            
+            onCSVLoad={setNetworkGraphOptions}
+            onCloseGraph={clearNetworkGraph}
+          />
+
         </Row>
-        
+
 
         <Row className="border-top p-0 h-100">
           {/* <Col xs={3} className="border-end"> */}
@@ -100,9 +115,6 @@ function MainPage() {
 
           </Col> */}
           <Col xs={12} className="p-2">
-
-
-            <Button onClick={() => setGraphState(!showGraph)} size="sm">Toggle Graph</Button>
             {
               showGraph && <NetworkGraph
                 nodes={graphNodes}
@@ -117,7 +129,7 @@ function MainPage() {
 
           </Col>
           {/* <Col xs={2}> */}
-          {/* // TODO: Make a component */}
+          {/* // TODO: Make a componeclassnt */}
 
             {/* Right Side Menu */}
             {/* <MenuLeftOptions /> */}
@@ -158,7 +170,7 @@ function MainPage() {
             title="Bayesian Estimation"
             />
           ):[]}
-        
+
 
         </Row>
       </Container>
@@ -167,12 +179,12 @@ function MainPage() {
 
 export default function App() {
   return (
-   
+
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
-   
+
   );
 }

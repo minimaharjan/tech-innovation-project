@@ -17,8 +17,8 @@ function MenuTab(props) {
   }
 
   return (
-    <Row>
-      <Col xs={9}>
+    <Row className="pe-0">
+      <Col>
         <Tabs
           defaultActiveKey="mode"
           transition={false}
@@ -27,7 +27,7 @@ function MenuTab(props) {
         >
           <Tab eventKey="files" title="Files" className="mb-1">
             <Stack direction="horizontal">
-              <Button
+              {/* <Button
                 className="p-2"
                 variant="outline-danger rounded-0 me-2"
                 size="sm">Start New Project</Button>
@@ -35,11 +35,12 @@ function MenuTab(props) {
                 className="p-2"
                 variant="outline-danger rounded-0 me-2"
                 size="sm">Load Project</Button>
-              {/* TODO: ADD xlsx and .xls file type later */}
+
               <Button
                 className="p-2"
                 variant="outline-danger rounded-0 me-2"
-                size="sm">Save Project</Button>
+                size="sm">Save Project</Button> */}
+              {/* TODO: ADD xlsx and .xls file type later */}
               <UploadButton
                 accept=".csv"
                 buttonTitle="Upload Network Data"
@@ -48,9 +49,16 @@ function MenuTab(props) {
               <ToastContainer />
               <Button
                 className="p-2"
-                variant="outline-danger rounded-0"
+                variant="outline-danger rounded-0 me-2"
                 type="file"
                 size="sm">Export</Button>
+              <Button
+                className="p-2"
+                variant="outline-danger rounded-0"
+                type="file"
+                size="sm"
+                onClick={props.onCloseGraph}
+              >Close Current Graph</Button>
             </Stack>
           </Tab>
           <Tab eventKey="mode" title="Mode" className="text-dark mb-1">
@@ -75,14 +83,14 @@ function MenuTab(props) {
           <Tab eventKey="settings" title="Settings">
             Tab content for Settings
           </Tab>
-          <Tab eventKey="help" title="Help" disabled>
+          {/* <Tab eventKey="help" title="Help" disabled>
             Tab content for Help and Manual
-          </Tab>
+          </Tab> */}
         </Tabs>
       </Col>
-      <Col className="border-start">
+      {/* <Col className="border-start">
         <MenuMainActionButtons />
-      </Col>
+      </Col> */}
     </Row>
 
   );
