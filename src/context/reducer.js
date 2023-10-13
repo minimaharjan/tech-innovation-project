@@ -3,6 +3,8 @@ export const initialState = {
     error:false,
     errorMessages:'',
     modeOption: "",
+    showModeModal: false,
+    showParameterModal:false,
     
 };
 
@@ -14,8 +16,15 @@ const reducer = (state=initialState, action) => {
     case 'SETMODE':
       return { 
         ...state, 
-        modeOption:action.payload, 
+        modeOption:action.payload.modeOption,
+        showModeModal: action.payload.showModeModal, 
     };
+    case 'SETPARAMETER':
+      return { 
+        ...state, 
+        showParameterModal: action.payload.showParameterModal, 
+    };
+
     
     default:
       return state;
