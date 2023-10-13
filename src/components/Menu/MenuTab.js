@@ -6,15 +6,24 @@ import Papa from 'papaparse';
 import { toast, ToastContainer } from 'react-toastify';
 import { CSVtoArray } from 'utils/utils';
 import Help from './Help';
+import { useAppContext } from "context/Provider";
 
 
 function MenuTab(props) {
+  const { state, dispatch } = useAppContext();
   const  handleNetworkCSV = async (file) => {
     const networkData = await CSVtoArray(file)
     toast.success("Network Data uploaded successfully", {
       position: toast.POSITION.TOP_CENTER
     });
     props.onCSVLoad(networkData)
+  }
+
+  const handleHelp=()=>{
+    let result={
+      showHelpModal: true
+    }
+    dispatch({type:'SETHELP', payload:result});
   }
 
   return (
@@ -85,8 +94,12 @@ function MenuTab(props) {
             Tab content for Settings
           </Tab>
           <Tab eventKey="help" title="Help" >
-            Tab content for Help and Manual
-            <Help/>
+          
+            <Button
+                className="p-2"
+                variant="outline-danger rounded-0 me-2"
+                size="sm"
+                onClick={handleHelp}>Help</Button>
           </Tab>
         </Tabs>
       </Col>
