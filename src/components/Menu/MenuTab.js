@@ -83,9 +83,9 @@ function MenuTab(props) {
           <Tab eventKey="settings" title="Settings">
             Tab content for Settings
           </Tab>
-          {/* <Tab eventKey="help" title="Help" disabled>
+          <Tab eventKey="help" title="Help" disabled>
             Tab content for Help and Manual
-          </Tab> */}
+          </Tab>
         </Tabs>
       </Col>
       {/* <Col className="border-start">
