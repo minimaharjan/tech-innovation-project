@@ -29,6 +29,8 @@ function MainPage() {
   const [isGraphDirected, setIsGraphDirected] = useState(false);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
 
+  const [graphStats, setGraphStats] = useState({});
+
 
   const setNetworkGraphOptions = (graphData) => {
     setGraphData(graphData)
@@ -83,9 +85,11 @@ function MainPage() {
         autoClose: true,
         closeButton: true
       });
+      setGraphStats(data)
       console.log(data)
     }).catch((err) => {
       console.log(err)
+      toast.dismiss();
       toast.error('Error', {
         position: toast.POSITION.TOP_CENTER
       });
@@ -125,7 +129,8 @@ function MainPage() {
           </Col> */}
           <Col xs={12} className="p-2">
             {
-              showGraph && <NetworkGraph
+              showGraph
+               && <NetworkGraph
                 nodes={graphNodes}
                 edges={graphEdges}
                 nodeGroupingAttribute={graphGroupingAttribute}
@@ -133,6 +138,7 @@ function MainPage() {
                 dimensions={graphDimensions}
                 directed={isGraphDirected}
                 emphasis={true}
+                graphStats={graphStats}
                 />
             }
 
@@ -153,9 +159,7 @@ function MainPage() {
             graphAttributeList={networkGraphData[0]}
           />
         }
-        
-        
-          
+
         {
           state.modeOption === 'option1' && state.showModeModal  ? (
             <ModeModal
@@ -192,8 +196,6 @@ function MainPage() {
             showParameterModal={state.showParameterModal}
             />
           }
-        
-
         </Row>
       </Container>
   );

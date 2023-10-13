@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import ReactECharts from 'echarts-for-react';
 import test from './test.json'
 import * as echarts from 'echarts';
 import { generateUniqueValues } from 'utils/utils'
+import { Button } from "react-bootstrap";
+import GraphStatistics from "./GraphStatistics";
 
 // Option for Seeing Cluster and Connection
 // It shows only major labels
@@ -13,14 +15,15 @@ import { generateUniqueValues } from 'utils/utils'
 // });
 
 function NetworkGraph(props) {
-  const option1 = {
+  const [showGraphStats, setShowGraphStatModal] = useState(false)
+
+  const graphOptions = {
     title: {
       top: 'bottom',
       left: 'right'
     },
     tooltip: {},
     // legend to be done by categories/binary/other attribute
-    // Need Logical thinkign on that
     legend:
       {
         show: !!props.nodeGroupingAttribute,
@@ -101,43 +104,25 @@ function NetworkGraph(props) {
       }
     ]
   };
-  console.log(option1)
-
-  // const option3 = {
-  //     legend: {
-  //       data: ['HTMLElement', 'WebGL', 'SVG', 'CSS', 'Other']
-  //     },
-  //     series: [
-  //       {
-  //         type: 'graph',
-  //         layout: 'force',
-  //         animation: false,
-  //         label: {
-  //           position: 'right',
-  //           formatter: '{b}'
-  //         },
-  //         draggable: true,
-  //         data: test.nodes.map(function (node, idx) {
-  //           node.id = idx;
-  //           return node;
-  //         }),
-  //         categories: test.categories,
-  //         force: {
-  //           edgeLength: 5,
-  //           repulsion: 20,
-  //           gravity: 0.2
-  //         },
-  //         edges: test.links
-  //       }
-  //     ]
-  //   };
     return (
         <div id="graph-main" className="border bg-white p-2">
             <ReactECharts
-                option={option1}
+                option={graphOptions}
                 style={{height: '400px', width: '100%'}}
             />
-            {/* Also add options to update the graph */}
+            <Button size="sm" onClick={() => {setShowGraphStatModal(true)}}>Show Graph Statistics</Button>
+
+            {
+              showGraphStats &&
+                <GraphStatistics
+                  show={showGraphStats}
+                  onHide={() => { setShowGraphStatModal(false) }}
+                  graphStats={props.graphStats}
+                />
+            }
+
+            {/* <Button size="sm">Update Graph Options</Button> */}
+            {/* Also add options to update the graph layout or nodes*/}
         </div>
     );
 }
