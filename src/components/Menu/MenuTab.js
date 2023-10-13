@@ -5,6 +5,7 @@ import UploadButton from 'components/General/UploadButton';
 import Papa from 'papaparse';
 import { toast, ToastContainer } from 'react-toastify';
 import { CSVtoArray } from 'utils/utils';
+import Help from './Help';
 
 
 function MenuTab(props) {
@@ -83,8 +84,9 @@ function MenuTab(props) {
           <Tab eventKey="settings" title="Settings">
             Tab content for Settings
           </Tab>
-          <Tab eventKey="help" title="Help" disabled>
+          <Tab eventKey="help" title="Help" >
             Tab content for Help and Manual
+            <Help/>
           </Tab>
         </Tabs>
       </Col>
