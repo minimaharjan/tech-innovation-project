@@ -101,10 +101,15 @@ function httpCall(url, method ='get', data) {
   })
 }
 
+function numToRound3(num) {
+  return Math.round(123.4567 * 1000) / 1000;
+}
+
 export {
   CSVtoArray,
   structureNodes,
   structureEdges,
   generateUniqueValues,
-  httpCall
+  httpCall,
+  numToRound3
 };

@@ -1,0 +1,17 @@
+.graph-stats-header {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+.graph-stats-detail-title {
+  /* color: */
+  font-size: .75rem;
+  text-align: center;
+}
+
+.graph-stats-detail-number {
+  /* color: */
+  font-weight: 900;
+  font-size: 1.6rem;
+  text-align: center;
+}

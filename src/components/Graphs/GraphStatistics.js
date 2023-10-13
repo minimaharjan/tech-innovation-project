@@ -1,4 +1,6 @@
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Row, Col } from "react-bootstrap";
+import { numToRound3 } from "utils/utils";
+import './GraphStatistics.css'
 
 function GraphStatistics(props) {
   const { show, onHide, graphStats } = props;
@@ -18,31 +20,71 @@ function GraphStatistics(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <section className="mb-2">
-          <h6>Graph Summary</h6>
-          <div>Number of nodes: {graphStats.graph_summary.total_nodes}</div>
-          <div>Number of edges: {graphStats.graph_summary.total_edges}</div>
-          {/* <div>Maximum degree: {}</div>
-          <div>Minimum degree: {}</div>
-          <div>Average degree: {}</div>
-          <div>Median degree: {}</div> */}
-          <div>Reciprocity: {graphStats.graph_summary.reciprocity}</div>
-        </section>
-        <section className="mb-2">
-          <h6>Graph Connetivity</h6>
-          <div>Strongly Connected Components: {graphStats.graph_connectivity.strongly_connected_components}</div>
-          <div>Weakly Connected Components: {graphStats.graph_connectivity.weakly_connected_components}</div>
-          <div>Size of Largest Strongly Connected Component : {graphStats.graph_connectivity.largest_strongly_connected_component_size}</div>
-        </section>
-        <section className="mb-2">
-          <h6>Graph Clustering</h6>
-          <div>Transitivity: {graphStats.graph_clustering.transitivity}</div>
-          <div>Average Clustering Coefficient: {graphStats.graph_clustering.average_clustering_coefficient}</div>
-          <div>Density: {graphStats.graph_clustering.density}</div>
-        </section>
+        <Row>
+          <Col className="border-end">
+          <section className="mb-2">
+            <h3 className="graph-stats-header">Graph Summary</h3>
+            <Row>
+              <Col className="mb-2">
+                <div className="graph-stats-detail-number">{graphStats.graph_summary.total_nodes}</div>
+                <div className="graph-stats-detail-title">Number of nodes</div>
+              </Col>
+              <Col className="mb-2">
+                <div className="graph-stats-detail-number">{graphStats.graph_summary.total_edges}</div>
+                <div className="graph-stats-detail-title">Number of edges</div>
+              </Col>
+              <Col className="mb-2">
+                <div className="graph-stats-detail-number">{numToRound3(graphStats.graph_summary.reciprocity)}</div>
+                <div className="graph-stats-detail-title">Reciprocity</div>
+              </Col>
+            </Row>
+            {/* <div>Maximum degree: {}</div>
+            <div>Minimum degree: {}</div>
+            <div>Average degree: {}</div>
+            <div>Median degree: {}</div> */}
+          </section>
+          </Col>
+
+          <Col className="border-end">
+            <section className="mb-2">
+              <h3 className="graph-stats-header">Graph Connetivity</h3>
+              <Row>
+                <Col className="mb-2">
+                  <div className="graph-stats-detail-number">{graphStats.graph_connectivity.strongly_connected_components}</div>
+                  <div className="graph-stats-detail-title">Strongly Connected Components</div>
+                </Col>
+                <Col className="mb-2">
+                  <div className="graph-stats-detail-number">{graphStats.graph_connectivity.weakly_connected_components}</div>
+                  <div className="graph-stats-detail-title">Weakly Connected Components</div>
+                </Col>
+                <Col className="mb-2">
+                  <div className="graph-stats-detail-number">{graphStats.graph_connectivity.largest_strongly_connected_component_size}</div>
+                  <div className="graph-stats-detail-title">Size of Largest Strongly Connected Component</div>
+                </Col>
+              </Row>
+            </section>
+          </Col>
+          <Col>
+            <section className="mb-2">
+              <h3 className="graph-stats-header">Graph Clustering</h3>
+              <Row>
+                <Col className="mb-2">
+                  <div className="graph-stats-detail-number">{numToRound3(graphStats.graph_clustering.transitivity)}</div>
+                  <div className="graph-stats-detail-title">Transitivity</div>
+                </Col>
+                <Col className="mb-2">
+                  <div className="graph-stats-detail-number">{numToRound3(graphStats.graph_clustering.average_clustering_coefficient)}</div>
+                  <div className="graph-stats-detail-title">Average Clustering Coefficient</div>
+                </Col>
+                <Col className="mb-2">
+                  <div className="graph-stats-detail-number">{numToRound3(graphStats.graph_clustering.density)}</div>
+                  <div className="graph-stats-detail-title">Density</div>
+                </Col>
+              </Row>
+            </section>
+          </Col>
+        </Row>
       </Modal.Body>
-      <Modal.Footer>
-      </Modal.Footer>
     </Modal>
   );
 }
