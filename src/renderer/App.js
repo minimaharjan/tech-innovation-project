@@ -14,22 +14,28 @@ import NetworkOptionSetModal from 'components/Body/NetworkOptionSetModal';
 import { toast, ToastContainer } from 'react-toastify';
 import { useAppContext } from "./../context/Provider";
 import ModeModal from 'components/Body/ModeModal';
-import Parameters from 'components/Body/Parameters';
+import MatrixTable from 'components/Graphs/MatrixTable';
+import { Resizable } from 'react-resizable';
+import 'react-resizable/css/styles.css';
+
+
+
+
 
 function MainPage() {
   const { state, dispatch } = useAppContext();
   const [showGraph, setShowGraphState] = useState(false);
   const [networkGraphData, setGraphData] = useState([]);
   const [graphNodes, setGraphNodes] = useState([]);
-  const [graphDimensions, setGraphDimensions] = useState([]);
+  const [graphDimensions, setGraphDimensions] = useState({ width: 400, height: 400 });
+  const [tableDimensions, setTableDimensions] = useState({ width: 200, height: 400 });
+  //const [graphDimensions, setGraphDimensions] = useState([]);
   const [graphLinkingAttribute, setGraphLinkingAttribute]= useState('');
   const [graphGroupingAttribute, setGraphGroupingAttribute] = useState('');
   const [graphLabellingAttribute, setGraphLabellingAttribute] = useState('')
   const [graphEdges, setGraphEdges] = useState([]);
   const [isGraphDirected, setIsGraphDirected] = useState(false);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] = useState(false)
-
-  const [graphStats, setGraphStats] = useState({});
 
 
   const setNetworkGraphOptions = (graphData) => {
@@ -87,6 +93,9 @@ function MainPage() {
       });
       setGraphStats(data)
       console.log(data)
+      //adjmatrix
+      console.log(data.graph_adj_matrix);
+      setAdjacencyMatrix(data.graph_adj_matrix);
     }).catch((err) => {
       console.log(err)
       toast.dismiss();
@@ -95,6 +104,7 @@ function MainPage() {
       });
     })
   }
+
 
   const clearNetworkGraph = () => {
     // Restore to Default Value
@@ -109,16 +119,16 @@ function MainPage() {
   }
 
 
+
+
   return (
-      <Container fluid className="h-100 d-flex flex-column pe-0">
-        <Row>
-          <MenuTab
-            onCSVLoad={setNetworkGraphOptions}
-            onCloseGraph={clearNetworkGraph}
-          />
-
-        </Row>
-
+    <Container fluid className="h-100 d-flex flex-column">
+      <Row>
+        <MenuTab
+          onCSVLoad={setNetworkGraphOptions}
+          onCloseGraph={clearNetworkGraph}
+        />
+      </Row>
 
         <Row className="border-top p-0 h-100">
           {/* <Col xs={3} className="border-end"> */}
@@ -129,8 +139,7 @@ function MainPage() {
           </Col> */}
           <Col xs={12} className="p-2">
             {
-              showGraph
-               && <NetworkGraph
+              showGraph && <NetworkGraph
                 nodes={graphNodes}
                 edges={graphEdges}
                 nodeGroupingAttribute={graphGroupingAttribute}
@@ -138,7 +147,6 @@ function MainPage() {
                 dimensions={graphDimensions}
                 directed={isGraphDirected}
                 emphasis={true}
-                graphStats={graphStats}
                 />
             }
 
@@ -159,7 +167,9 @@ function MainPage() {
             graphAttributeList={networkGraphData[0]}
           />
         }
-
+        
+        
+          
         {
           state.modeOption === 'option1' && state.showModeModal  ? (
             <ModeModal
@@ -196,6 +206,8 @@ function MainPage() {
             showParameterModal={state.showParameterModal}
             />
           }
+        
+
         </Row>
       </Container>
   );
