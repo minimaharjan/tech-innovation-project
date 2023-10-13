@@ -85,7 +85,7 @@ function NetworkOptionSetModal (props) {
               }
             </Form.Select>
           </Row>
-          <Row>
+          <Row className="mb-3">
             <Form.Label className="ps-0">Select Node Grouping Attribute/Column <span style={{color:'red'}}>(Optional)</span></Form.Label>
             <Form.Select size="sm"
               value={groupingAttribute}

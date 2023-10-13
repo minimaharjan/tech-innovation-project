@@ -102,7 +102,7 @@ function httpCall(url, method ='get', data) {
 }
 
 function numToRound3(num) {
-  return Math.round(123.4567 * 1000) / 1000;
+  return Math.round(num * 1000) / 1000;
 }
 
 export {

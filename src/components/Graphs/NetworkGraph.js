@@ -110,7 +110,7 @@ function NetworkGraph(props) {
                 option={graphOptions}
                 style={{height: '400px', width: '100%'}}
             />
-            <Button size="sm" onClick={() => {setShowGraphStatModal(true)}}>Show Graph Statistics</Button>
+            <Button size="sm" onClick={() => {setShowGraphStatModal(true)}} variant="warning">Show Graph Statistics</Button>
 
             {
               showGraphStats &&
