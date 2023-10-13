@@ -13,25 +13,30 @@ function ModeModal(props) {
   const {modeOption, title, showModeModal}= props;
   
     
-  // const handleClose=(value)=>{
-  //   console.log(value)
-  //   dispatch({ type: 'SETMODE', payload:modeOption, showModeModal: value});
+  const handleClose=(value)=>{
+    let result={
+      modeOption: "",
+      showModeModal: false
+    }
+    dispatch({ type: 'SETMODE', payload:result});
     
-  // }
+  }
     
   return (
-    <div
-      className="modal show"
-      style={{ display: 'block', position: 'initial' }}
-    >
-    {/* <Modal
-        // show={showModeModal}
-        // onHide={handleClose}
+    // <div
+    //   className="modal show"
+    //   style={{ display: 'block', position: 'initial' }}
+    // >
+    <Modal
+        show={showModeModal}
+        onHide={handleClose}
         backdrop="static"
         // keyboard={false}
-      > */}
+        size='lg'
+        centered
+      >
         {/* {showModeModal} */}
-      <Modal.Dialog size='lg' dialogClassName="modal-lg">
+      {/* <Modal.Dialog size='lg' dialogClassName="modal-lg"> */}
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
@@ -60,22 +65,20 @@ function ModeModal(props) {
           default:      return (<Simulation/>);
         }
       })()}
-            {/* {title === "Simulation" ?
-        <Simulation/> :[]   
-        } */}
+            
         </Col>
       </Row>
         </Modal.Body>
 
         <Modal.Footer>
           <Button variant="secondary" 
-          // onClick={handleClose(false)}
+          onClick={handleClose}
           >Close</Button>
           <Button variant="primary">Save changes</Button>
         </Modal.Footer>
-      </Modal.Dialog>
-      {/* </Modal> */}
-    </div>
+      {/* </Modal.Dialog> */}
+      </Modal>
+    // </div>s
   );
 }
 

@@ -14,6 +14,7 @@ import NetworkOptionSetModal from 'components/Body/NetworkOptionSetModal';
 import { toast, ToastContainer } from 'react-toastify';
 import { useAppContext } from "./../context/Provider";
 import ModeModal from 'components/Body/ModeModal';
+import Parameters from 'components/Body/Parameters';
 
 function MainPage() {
   const { state, dispatch } = useAppContext();
@@ -132,33 +133,45 @@ function MainPage() {
             graphAttributeList={networkGraphData[0]}
           />
         }
+        
+        
+          
         {
-          state.modeOption === 'option1'  ? (
+          state.modeOption === 'option1' && state.showModeModal  ? (
             <ModeModal
             modeOption={state.modeOption}
             title="Simulation"
-            // showModeModal={state.showModeModal}
+            showModeModal={state.showModeModal}
             />
           ):[]}
-          {state.modeOption === 'option2' ? (
+          {state.modeOption === 'option2' && state.showModeModal ? (
             <ModeModal
             modeOption={state.modeOption}
             title="Estimation"
+            showModeModal={state.showModeModal}
             />
           ):[]}
-          {state.modeOption === 'option3' ? (
+          {state.modeOption === 'option3' && state.showModeModal ? (
             <ModeModal
             modeOption={state.modeOption}
             title="GOF"
+            showModeModal={state.showModeModal}
             />
           ):[]}
 
-          {state.modeOption === 'option4' ? (
+          {state.modeOption === 'option4' && state.showModeModal ? (
             <ModeModal
             modeOption={state.modeOption}
             title="Bayesian Estimation"
+            showModeModal={state.showModeModal}
             />
           ):[]}
+          {
+            state.showParameterModal &&
+            <Parameters
+            showParameterModal={state.showParameterModal}
+            />
+          }
         
 
         </Row>

@@ -7,7 +7,7 @@ function ERGMActions() {
   
 
   const [selectedOption, setOption] = useState("option1");
-  // const [showModeModal, setShowModeModal]= useState();
+  const [showModeModal, setShowModeModal]= useState();
   
   useEffect(() => {
     setOption(state?.modeOption)
@@ -33,8 +33,11 @@ function ERGMActions() {
     },
   }
   const handleMode = (value) => {
-    console.log(value)
-    dispatch({ type: 'SETMODE', payload: value});
+    let result={
+      modeOption: value,
+      showModeModal: true
+    }
+    dispatch({ type: 'SETMODE', payload: result});
     
   };
 
