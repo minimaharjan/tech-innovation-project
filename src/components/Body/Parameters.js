@@ -9,12 +9,131 @@ function Parameters(props) {
     const {showParameterModal}= props;
     const handleClose=(value)=>{
         let result={
-        
           showParameterModal: false
         }
         dispatch({ type: 'SETPARAMETER', payload:result});
         
       }
+
+      const parameterList = [
+        {
+          id: 1,
+          effects: "EdgeA",
+          include:"include1",
+          fixed:"fixed1",
+          lambda:"lambda1",
+          value:"value1"
+        },
+         {
+          id: 2,
+          effects: "Star2A",
+          include:"include2",
+          fixed:"fixed2",
+          lambda:"lambda2",
+          value:"value2"
+        },
+         {
+          id: 3,
+          effects: "Star3A",
+          include:"include3",
+          fixed:"fixed3",
+          lambda:"lambda3",
+          value:"value3"
+        },
+         
+        {
+          id: 4,
+          effects: "Star4A",
+          include:"include4",
+          fixed:"fixed4",
+          lambda:"lambda4",
+          value:"value4"
+        },
+        {
+          id: 5,
+          effects: "Star5A",
+          include:"include5",
+          fixed:"fixed5",
+          lambda:"lambda5",
+          value:"value5"
+        },
+         {
+          id: 6,
+          effects: "TriangleA",
+          include:"include6",
+          fixed:"fixed6",
+          lambda:"lambda6",
+          value:"value6"
+        },
+         {
+          id: 7,
+          effects: "Cycle4A",
+          include:"include7",
+          fixed:"fixed7",
+          lambda:"lambda7",
+          value:"value7"
+        },
+         
+        {
+          id: 8,
+          effects: "IsolateA",
+          include:"include8",
+          fixed:"fixed8",
+          lambda:"lambda8",
+          value:"value8"
+        },
+        {
+          id: 9,
+          effects: "IsolateEdgesA",
+          include:"include9",
+          fixed:"fixed9",
+          lambda:"lambda9",
+          value:"value9"
+        },
+         
+        {
+          id: 10,
+          effects: "ASA",
+          include:"include10",
+          fixed:"fixed10",
+          lambda:"lambda10",
+          value:"value10"
+        },
+        {
+          id: 11,
+          effects: "ASA2",
+          include:"include11",
+          fixed:"fixed11",
+          lambda:"lambda11",
+          value:"value11"
+        },
+         {
+          id: 12,
+          effects: "ATA",
+          include:"include12",
+          fixed:"fixed12",
+          lambda:"lambda12",
+          value:"value12"
+        },
+         
+        {
+          id: 13,
+          effects: "A2PA",
+          include:"include13",
+          fixed:"fixed13",
+          lambda:"lambda13",
+          value:"value13"
+        },
+        {
+          id: 14,
+          effects: "AETA",
+          include:"include14",
+          fixed:"fixed14",
+          lambda:"lambda14",
+          value:"value14"
+        },
+      ]
+
   return (
     <Modal
         show={showParameterModal}
@@ -30,60 +149,94 @@ function Parameters(props) {
           <Modal.Title>Parameters</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
+        <Modal.Body >
           
-        <Table striped bordered hover>
-      <thead>
+        <Table striped bordered hover style={{ height: '300px' }} className="overflow-auto">
+      <thead className='skicky-top'>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>S.N.</th>
+          <th>Effects</th>
+          <th>Include</th>
+          <th>Fixed</th>
+          <th>λ</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>
+      {parameterList.map((option, index) => (
         <tr>
+        <td>{index+1}</td>
+        <td>{option.effects}</td>
+        <td>
+          <Form.Check
+          type="checkbox"
+          id="Include1"
+          />
+        </td>
+        <td>
+        <Form.Check
+          type="checkbox"
+          id="Fixed1"
+          />
+        </td>
+        <td>
+          <Form.Control
+          type="number"
+          id="λ1"
+          />
+          </td>
+        <td>
+          <Form.Control
+          type="number"
+          id="λ1"
+          />
+          </td>
+        
+      </tr>
+      ))
+    }
+        {/* <tr>
           <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-
-        </tr>
+          <td>EdgeA</td>
+          <td>
+            <Form.Check
+            type="checkbox"
+            id="Include1"
+            />
+          </td>
+          <td>
+          <Form.Check
+            type="checkbox"
+            id="Fixed1"
+            />
+          </td>
+          <td>
+            <Form.Control
+            type="number"
+            id="λ1"
+            />
+            </td>
+          <td>
+            <Form.Control
+            type="number"
+            id="λ1"
+            />
+            </td>
+          
+        </tr> */}
+        {/* <tr>
+          <td>EdgeA</td>
+          <td>Star2A</td>
+          <td>Star3A</td>
+          <td>Star4A</td>
+          <td>Star5A</td>
+          <td>TriangleA</td>
+          <td>Cycle4A</td>
+          <td>IsolatesA</td>
+          <td>IsolateEdgesA</td>
+          <td>ASA</td>
+        </tr> */}
+        
       </tbody>
     </Table>
         </Modal.Body>
