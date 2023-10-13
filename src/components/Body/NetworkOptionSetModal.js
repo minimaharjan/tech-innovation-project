@@ -117,7 +117,7 @@ function NetworkOptionSetModal (props) {
             </Form.Select>
           </Row>
         </Form>
-        <div className="border-top pt-3">
+        <div className="pt-3">
           <div className="border-top pt-2 pb-2">Select Edge List File</div>
           <UploadButton
             accept=".csv"
