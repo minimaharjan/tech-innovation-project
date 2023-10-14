@@ -67,7 +67,9 @@ function MainPage() {
       directed: settings.directed,
       linkAttribute: settings.linkingAttribute
     })
-    const toast_id = toast.loading("Saving Settings...")
+    const toast_id = toast.loading("Saving Settings...", {
+      closeButton: true
+    })
     await httpCall('/graph-stats',
     'post',
     {

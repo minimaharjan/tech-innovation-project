@@ -55,7 +55,7 @@ function NetworkGraph(props) {
                   document.msExitFullscreen();
                 }
               } else {
-                let graphContainer = document.getElementById("graph-main");
+                let graphContainer = document.getElementById("graph-main").firstChild;
                 if (graphContainer.requestFullscreen) {
                   graphContainer.requestFullscreen();
                 } else if (graphContainer.webkitRequestFullscreen) { /* Safari */
