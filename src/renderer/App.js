@@ -58,8 +58,6 @@ function MainPage() {
     // Add graph weightsetNetworkGraphOptionSetModal
     // Exclude unselect nodes from graphdimension
     // set nodemain attribute dynamically
-
-    // Select attribute to use as legend, attrbiutes to show and category type
   }
 
   const getGraphDetails = async (nodes, edges, settings) => {
@@ -110,7 +108,7 @@ function MainPage() {
 
 
   return (
-      <Container fluid className="h-100 d-flex flex-column pe-0">
+      <Container fluid className="h-100 d-flex flex-column">
         <Row>
           <MenuTab
             onCSVLoad={setNetworkGraphOptions}
@@ -121,13 +119,7 @@ function MainPage() {
 
 
         <Row className="border-top p-0 h-100">
-          {/* <Col xs={3} className="border-end"> */}
-            {/* Left Side Menu */}
-
-            {/* <NodeMenu className="border-bottom" />
-
-          </Col> */}
-          <Col xs={12} className="p-2">
+          <Col xs={12} className="p-2 h-100">
             {
               showGraph
                && <NetworkGraph
@@ -143,12 +135,6 @@ function MainPage() {
             }
 
           </Col>
-          {/* <Col xs={2}> */}
-          {/* // TODO: Make a componeclassnt */}
-
-            {/* Right Side Menu */}
-            {/* <MenuLeftOptions /> */}
-          {/* </Col> */}
 
         {
           showNetworkGraphOptionSetModal &&

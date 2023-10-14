@@ -3,10 +3,16 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 
- html, body, #root {
+html, body, #root {
   height: 100%;
- }
+}
 
- .nav-link {
-    color: black;
- }
+.nav-link {
+  color: black;
+}
+
+#graph-statistics-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+}

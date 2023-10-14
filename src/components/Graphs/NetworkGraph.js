@@ -116,12 +116,12 @@ function NetworkGraph(props) {
     ]
   };
     return (
-        <div id="graph-main" className="border bg-white p-2">
+        <div id="graph-main" className="border bg-white p-2 h-100">
             <ReactECharts
                 option={graphOptions}
-                style={{height: '400px', width: '100%'}}
+                style={{"height": '100%'}}
             />
-            <Button size="sm" onClick={() => {setShowGraphStatModal(true)}} variant="warning">Show Graph Statistics</Button>
+            <Button size="sm" onClick={() => {setShowGraphStatModal(true)}} variant="warning" id="graph-statistics-btn">Show Graph Statistics</Button>
 
             {
               showGraphStats &&
