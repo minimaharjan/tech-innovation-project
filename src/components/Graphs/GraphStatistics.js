@@ -1,6 +1,7 @@
 import { Modal, Button, Row, Col } from "react-bootstrap";
 import { numToRound3 } from "utils/utils";
 import './GraphStatistics.css'
+import DegreeDistributionGraph from "./DegreeDistributionGraph";
 
 function GraphStatistics(props) {
   const { show, onHide, graphStats } = props;
@@ -83,6 +84,12 @@ function GraphStatistics(props) {
               </Row>
             </section>
           </Col>
+        </Row>
+        <Row>
+          <DegreeDistributionGraph
+            degreeList={[0,1,2,3,4,5,6]}
+            degreeOccurenceList={[2,4,6,7,10,12,14]}
+            className="mt-2 border-top p-1"/>
         </Row>
       </Modal.Body>
     </Modal>
