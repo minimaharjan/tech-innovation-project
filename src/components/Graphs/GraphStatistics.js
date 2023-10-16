@@ -2,9 +2,33 @@ import { Modal, Button, Row, Col } from "react-bootstrap";
 import { numToRound3 } from "utils/utils";
 import './GraphStatistics.css'
 import DegreeDistributionGraph from "./DegreeDistributionGraph";
+import html2pdf from 'html2pdf.js';
 
 function GraphStatistics(props) {
   const { show, onHide, graphStats } = props;
+
+  const downloadGraphStats = () => {
+    const element_stats = document.getElementById('graph-stats-modal');
+    const element_nw_graph = document.getElementById("graph-main");
+
+    const opt = {
+      margin:       .25,
+      filename:     'network-graph-stats.pdf',
+      image:        { type: 'jpeg', quality: 1 },
+      html2canvas:  { scale: 1 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf()
+      .set(opt)
+      .from(element_nw_graph).toPdf().get('pdf')
+      .then(function (pdf) {
+        pdf.addPage();
+      })
+      .from(element_stats)
+      .toContainer().toCanvas().toPdf().save();
+  }
+
   return (
     <Modal
       show={show}
@@ -14,10 +38,18 @@ function GraphStatistics(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      id="graph-stats-modal"
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Network Graph Statistics
+          <Row>
+            <Col>
+              Network Graph Statistics
+            </Col>
+            <Col className="ms-auto" data-html2canvas-ignore="true">
+              <Button onClick={downloadGraphStats}>Download PDF</Button>
+            </Col>
+          </Row>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
