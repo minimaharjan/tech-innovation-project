@@ -17,7 +17,8 @@ function DegreeDistributionGraph(props) {
       type: 'value',
       name: 'Number of nodes',
       nameLocation: 'center',
-      nameGap: 35
+      nameGap: 35,
+      minInterval: 1
     },
     series: [
       {
