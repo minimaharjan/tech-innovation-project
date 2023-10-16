@@ -20,10 +20,20 @@ function DegreeDistributionGraph(props) {
       nameGap: 35,
       minInterval: 1
     },
+    calculable: true,
+    tooltip: {
+      trigger: 'axis'
+    },
     series: [
       {
         data: props.degreeOccurenceList,
-        type: 'bar'
+        type: 'bar',
+        markPoint: {
+          data: [
+            { type: 'max', name: 'Max' },
+            { type: 'min', name: 'Min' }
+          ]
+        }
       }
     ]
   };
