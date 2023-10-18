@@ -1,5 +1,6 @@
 import { Button } from 'react-bootstrap'
 import { useRef, useState } from 'react';
+import './UploadButton.css';
 
 function UploadButton(props) {
   const inputRef = useRef(null);
@@ -33,13 +34,13 @@ function UploadButton(props) {
         onChange={(e) => {handleUploadedFile(e)}}
       />
       <Button
-        className="p-2"
-        variant={props.buttonColor || "outline-danger rounded-0 me-2"}
+        className="p-2 custom-button"
+        variant={props.buttonColor || "outline-danger me-2"}
         size="sm"
         onClick={handleUpload}
 
         >
-        {props.buttonTitle || 'Upload'}
+        <span className="btn-text">{props.buttonTitle || 'Upload'}</span>
       </Button>
       {
         props.showFileName &&

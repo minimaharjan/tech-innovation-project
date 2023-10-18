@@ -1,5 +1,6 @@
 import ERGMActions from 'components/Body/ERGMActions';
 import { Tabs, Tab, Stack, Button, Row, Col } from 'react-bootstrap';
+import './MenuTab.css';
 import MenuMainActionButtons from './MenuMainActionButtons';
 import UploadButton from 'components/General/UploadButton';
 import Papa from 'papaparse';
@@ -7,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { CSVtoArray } from 'utils/utils';
 import Help from './Help';
 import { useAppContext } from "context/Provider";
+
 
 
 function MenuTab(props) {
@@ -62,16 +64,19 @@ function MenuTab(props) {
                 variant="outline-danger rounded-0 me-2"
                 type="file"
                 size="sm">Export</Button> */}
+
               <Button
-                className="p-2"
-                variant="outline-danger rounded-0"
+                className="p-2 custom-button"
+                variant="outline-danger"
                 type="file"
                 size="sm"
                 onClick={props.onCloseGraph}
-              >Close Current Graph</Button>
+              ><span className="btn-text">Close Current Graph</span>
+              </Button>
+
             </Stack>
           </Tab>
-          <Tab eventKey="mode" title="Mode" className="text-dark mb-1">
+          <Tab eventKey="mode" title="Mode" className="text-dark mb-1 mode tab">
             <ERGMActions />
           </Tab>
           {/* <Tab eventKey="settings" title="Settings">
@@ -82,11 +87,14 @@ function MenuTab(props) {
           </Tab> */}
           <Tab eventKey="help" title="Help" >
           
-            <Button
-                className="p-2"
-                variant="outline-danger rounded-0 me-2"
-                size="sm"
-                onClick={handleHelp}>Help</Button>
+          <Button
+          className="p-2 custom-button"
+          variant="outline-danger"
+          size="sm"
+          onClick={handleHelp}>
+          <span className="btn-text">Help</span>
+          </Button>
+
           </Tab>
         </Tabs>
       </Col>

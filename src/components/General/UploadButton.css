@@ -1,0 +1,16 @@
+/* MenuTab.css */
+.custom-button {
+    transition: all 0.2s;
+    border-radius: 0; /* Set initial border-radius to 0 for square edges */
+  }
+  
+  .custom-button:hover {
+    transform: scale(1.2);
+    border-radius: 10px; /* Add rounded edges on hover */
+    background-color: white;
+    border: 1px solid grey;
+  }
+  
+  .custom-button:hover .btn-text {
+    color: grey;
+  }
