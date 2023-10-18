@@ -71,7 +71,7 @@ function NetworkOptionSetModal (props) {
             />
           </Row>
           <Row className="mb-3">
-            <Form.Label className="ps-0">Select Node Linking Attribute/Column</Form.Label>
+            <Form.Label className="ps-0">Select Node Linking Attribute</Form.Label>
             <Form.Select
               size="sm"
               value={linkingAttribute}
@@ -86,7 +86,7 @@ function NetworkOptionSetModal (props) {
             </Form.Select>
           </Row>
           <Row className="mb-3">
-            <Form.Label className="ps-0">Select Node Grouping Attribute/Column <span style={{color:'red'}}>(Optional)</span></Form.Label>
+            <Form.Label className="ps-0">Select Node Grouping Attribute <span style={{color:'red', fontSize: '.8rem'}}>(Optional)</span></Form.Label>
             <Form.Select size="sm"
               value={groupingAttribute}
               selected={groupingAttribute}
@@ -102,7 +102,7 @@ function NetworkOptionSetModal (props) {
             </Form.Select>
           </Row>
           <Row className="mb-3">
-            <Form.Label className="ps-0">Select Label Column for Nodes <span style={{color:'red'}}>(Optional)</span></Form.Label>
+            <Form.Label className="ps-0">Select Label Column for Nodes <span style={{color:'red', fontSize: '.8rem'}}>(Optional)</span></Form.Label>
             <Form.Select
               size="sm"
               value={labellingAttribute}
@@ -118,10 +118,10 @@ function NetworkOptionSetModal (props) {
           </Row>
         </Form>
         <div className="pt-3">
-          <div className="border-top pt-2 pb-2">Select Edge List File</div>
+          <div className="border-top pt-2 pb-2">Select Edge/Link CSV File</div>
           <UploadButton
             accept=".csv"
-            buttonTitle="Upload Network Edge/Link Data"
+            buttonTitle="Upload Network Edge File"
             onSuccessFullUpload={handleNetworkEdgeCSV}
             showFileName={true}
           />

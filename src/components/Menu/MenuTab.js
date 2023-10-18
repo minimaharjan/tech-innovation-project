@@ -47,11 +47,11 @@ function MenuTab(props) {
                 onSuccessFullUpload={handleNetworkCSV}
               />
               <ToastContainer />
-              <Button
+              {/* <Button
                 className="p-2"
                 variant="outline-danger rounded-0 me-2"
                 type="file"
-                size="sm">Export</Button>
+                size="sm">Export</Button> */}
               <Button
                 className="p-2"
                 variant="outline-danger rounded-0"
@@ -64,26 +64,10 @@ function MenuTab(props) {
           <Tab eventKey="mode" title="Mode" className="text-dark mb-1">
             <ERGMActions />
           </Tab>
-          <Tab eventKey="model" title="Model Specification" className="mb-1">
-            <Stack direction="horizontal">
-              <Button
-                className="p-2"
-                variant="outline-danger rounded-0 me-2"
-                size="sm">Model Type</Button>
-              <Button
-                className="p-2"
-                variant="outline-danger rounded-0 me-2"
-                size="sm">Parameters</Button>
-              <Button
-                className="p-2"
-                variant="outline-danger rounded-0 me-2"
-                size="sm">Attributes</Button>
-            </Stack>
-          </Tab>
-          <Tab eventKey="settings" title="Settings">
+          {/* <Tab eventKey="settings" title="Settings">
             Tab content for Settings
-          </Tab>
-          <Tab eventKey="help" title="Help" disabled>
+          </Tab> */}
+          <Tab eventKey="help" title="Help">
             Tab content for Help and Manual
           </Tab>
         </Tabs>

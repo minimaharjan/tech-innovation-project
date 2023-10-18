@@ -46,8 +46,10 @@ function GraphStatistics(props) {
             <Col>
               Network Graph Statistics
             </Col>
-            <Col className="ms-auto" data-html2canvas-ignore="true">
-              <Button onClick={downloadGraphStats}>Download Graph Stats</Button>
+          </Row>
+          <Row data-html2canvas-ignore="true">
+            <Col>
+              <Button onClick={downloadGraphStats} size="sm" variant="warning">Download Graph Statistics</Button>
             </Col>
           </Row>
         </Modal.Title>
