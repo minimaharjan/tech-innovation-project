@@ -34,7 +34,7 @@ function UploadButton(props) {
       />
       <Button
         className="p-2"
-        variant="outline-danger rounded-0 me-2"
+        variant={props.buttonColor || "outline-danger rounded-0 me-2"}
         size="sm"
         onClick={handleUpload}
 

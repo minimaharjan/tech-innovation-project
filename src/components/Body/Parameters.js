@@ -150,9 +150,9 @@ function Parameters(props) {
         </Modal.Header>
 
         <Modal.Body >
-          
-        <Table striped bordered hover style={{ height: '300px' }} className="overflow-auto">
-      <thead className='skicky-top'>
+        {/* hover style={{ height: '300px' }} className="overflow-auto" */}
+        <Table striped bordered style={{ display: 'block', height: '300px', overflowY: 'scroll' }}>
+      <thead sticky="top">
         <tr>
           <th>S.N.</th>
           <th>Effects</th>
@@ -162,7 +162,7 @@ function Parameters(props) {
           <th>Value</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
       {parameterList.map((option, index) => (
         <tr>
         <td>{index+1}</td>
@@ -195,49 +195,7 @@ function Parameters(props) {
       </tr>
       ))
     }
-        {/* <tr>
-          <td>1</td>
-          <td>EdgeA</td>
-          <td>
-            <Form.Check
-            type="checkbox"
-            id="Include1"
-            />
-          </td>
-          <td>
-          <Form.Check
-            type="checkbox"
-            id="Fixed1"
-            />
-          </td>
-          <td>
-            <Form.Control
-            type="number"
-            id="λ1"
-            />
-            </td>
-          <td>
-            <Form.Control
-            type="number"
-            id="λ1"
-            />
-            </td>
-          
-        </tr> */}
-        {/* <tr>
-          <td>EdgeA</td>
-          <td>Star2A</td>
-          <td>Star3A</td>
-          <td>Star4A</td>
-          <td>Star5A</td>
-          <td>TriangleA</td>
-          <td>Cycle4A</td>
-          <td>IsolatesA</td>
-          <td>IsolateEdgesA</td>
-          <td>ASA</td>
-        </tr> */}
-        
-      </tbody>
+              </tbody>
     </Table>
         </Modal.Body>
 
