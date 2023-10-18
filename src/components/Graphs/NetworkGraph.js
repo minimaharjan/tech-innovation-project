@@ -129,6 +129,7 @@ function NetworkGraph(props) {
                   show={showGraphStats}
                   onHide={() => { setShowGraphStatModal(false) }}
                   graphStats={props.graphStats}
+                  directed={props.directed}
                 />
             }
 

@@ -5,7 +5,7 @@ import DegreeDistributionGraph from "./DegreeDistributionGraph";
 import html2pdf from 'html2pdf.js';
 
 function GraphStatistics(props) {
-  const { show, onHide, graphStats } = props;
+  const { show, onHide, graphStats, directed } = props;
 
   const downloadGraphStats = () => {
     const element_stats = document.getElementById('graph-stats-modal');
@@ -123,8 +123,36 @@ function GraphStatistics(props) {
           <DegreeDistributionGraph
             degreeList={graphStats.graph_degree_distribution.list_of_unique_degree}
             degreeOccurenceList={graphStats.graph_degree_distribution.count_of_unique_degree}
-            className="mt-2 border-top p-1"/>
+            mean={graphStats.graph_degree_distribution.degree_mean}
+            standev={graphStats.graph_degree_distribution.degree_stddev}
+            title="Degree Distribution"
+            className="mt-3 border-top p-1"
+            />
         </Row>
+        {
+          directed &&
+          <>
+            <Row>
+              <DegreeDistributionGraph
+                degreeList={graphStats.graph_degree_distribution.list_of_in_degree}
+                degreeOccurenceList={graphStats.graph_degree_distribution.count_of_in_degree}
+                mean={graphStats.graph_degree_distribution.in_degree_mean}
+                standev={graphStats.graph_degree_distribution.in_degree_stddev}
+                title="In Degree Distribution"
+                className="mt-3 border-top p-1"/>
+            </Row>
+            <Row>
+              <DegreeDistributionGraph
+                degreeList={graphStats.graph_degree_distribution.list_of_out_degree}
+                degreeOccurenceList={graphStats.graph_degree_distribution.count_of_out_degree}
+                mean={graphStats.graph_degree_distribution.out_degree_mean}
+                standev={graphStats.graph_degree_distribution.out_degree_stddev}
+                title="Out Degree Distribution"
+                className="mt-3 border-top p-1"
+              />
+            </Row>
+          </>
+        }
       </Modal.Body>
     </Modal>
   );
