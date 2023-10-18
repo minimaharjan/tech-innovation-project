@@ -15,6 +15,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useAppContext } from "./../context/Provider";
 import ModeModal from 'components/Body/ModeModal';
 import Parameters from 'components/Body/Parameters';
+import Help from 'components/Menu/Help';
 
 function MainPage() {
   const { state, dispatch } = useAppContext();
@@ -184,6 +185,12 @@ function MainPage() {
             showParameterModal={state.showParameterModal}
             />
           }
+
+          {
+            state.showHelpModal &&
+           <Help/>
+          }
+
         </Row>
       </Container>
   );
