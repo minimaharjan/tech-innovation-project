@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAppContext } from "context/Provider";
 import {Container, Row, Col, InputGroup, Form, Button} from 'react-bootstrap';
+import UploadButton from "components/General/UploadButton";
 
 function ModelSpecification() {
     const { state, dispatch } = useAppContext();
@@ -17,30 +18,30 @@ function ModelSpecification() {
     
       <Form>
       <Form.Group controlId="checkboxGroup">
-        <div  className="d-flex justify-content-evenly mb-3">
+        <div  className="d-flex justify-content-around mb-3">
           <Form.Check
             type="checkbox"
             label={<span className="fs-6">Include</span>}
             id="checkbox1"
-            className="mr-1"
+            className="me-2"
           />
           <Form.Check
             type="checkbox"
             label="Directed"
             id="checkbox2"
-            className="mr-1"
+            className="me-2"
           />
           <Form.Check
             type="checkbox"
             label="Fix "
             id="checkbox3"
-            className="mr-1"
+            className="me-2"
           />
           <Form.Check
             type="checkbox"
             label="Fixed Density"
             id="checkbox4"
-            className="mr-1"
+            className="me-2"
           />
           <div>Starting Density</div>
           <Form.Control 
@@ -50,30 +51,47 @@ function ModelSpecification() {
          
         </div>
       </Form.Group>
+      
     </Form>      
       {/* </Row> */}
-      <Row xs={1} md={2}>
-      <Col>1 of 3</Col>
+    <Row xs={1} md={2}>
+      <Col>
+      
+        <Row className="mb-3">
+        <UploadButton
+        buttonTitle="Upload Network File"
+        buttonColor="outline-primary"
+        />
+        </Row>
+        <Row className="mb-3">
+        <UploadButton
+        buttonTitle="Structural Zero File"
+        buttonColor="outline-primary"
+        />
+        </Row>
+        <Row className="mb-3">
+        <UploadButton
+        buttonTitle="Missing Indicator"
+        buttonColor="outline-primary"
+        />
+        </Row>
+      </Col>
         
-      <div  className="d-flex justify-content-end">
-      <Button
-      variant="primary"
-      className='btn-sm'
-      size="lg"
-      style={{ width: '100px', height: '100px' }}
-      onClick={handleSelectParameter}
-    >
-      Select parameter
-    </Button>
-        
+      <div  className="d-flex justify-content-center">
+        <Button
+        variant="primary"
+        className='btn-sm'
+        size="lg"
+        style={{ width: '100px', height: '100px' }}
+        onClick={handleSelectParameter}
+        >
+        Select parameter
+        </Button>
+         
       </div>
         
-      </Row>
-      <Row xs="auto">
-        <Col>1 of 3</Col>
-        <Col>2 of 3</Col>
-        <Col>3 of 3</Col>
-      </Row>
+    </Row>
+      
     </Container>
   )
 }
