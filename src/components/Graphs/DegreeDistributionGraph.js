@@ -15,7 +15,7 @@ function DegreeDistributionGraph(props) {
     },
     yAxis: {
       type: 'value',
-      name: 'Number of nodes',
+      name: 'Frequency',
       nameLocation: 'center',
       nameGap: 35,
       minInterval: 1
