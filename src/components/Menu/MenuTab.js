@@ -5,15 +5,26 @@ import UploadButton from 'components/General/UploadButton';
 import Papa from 'papaparse';
 import { toast, ToastContainer } from 'react-toastify';
 import { CSVtoArray } from 'utils/utils';
+import { useAppContext } from "context/Provider";
 
 
 function MenuTab(props) {
+  const { state, dispatch } = useAppContext();
   const  handleNetworkCSV = async (file) => {
     const networkData = await CSVtoArray(file)
     toast.success("Network Data uploaded successfully", {
       position: toast.POSITION.TOP_CENTER
     });
     props.onCSVLoad(networkData)
+  }
+
+  const handleTabOption=(value)=>{
+    console.log(value)
+    let result={
+      tabOption: value,
+    }
+    dispatch({type: 'SETTABPOTION', payload:result})
+    
   }
 
   return (
@@ -24,8 +35,9 @@ function MenuTab(props) {
           transition={false}
           id="uncontrolled-tab-example"
           className="text-dark mb-1"
+          onSelect={handleTabOption}
         >
-          <Tab eventKey="files" title="Files" className="mb-1">
+          <Tab eventKey="files" title="Files" value="files" className="mb-1" >
             <Stack direction="horizontal">
               {/* <Button
                 className="p-2"
@@ -61,7 +73,7 @@ function MenuTab(props) {
               >Close Current Graph</Button>
             </Stack>
           </Tab>
-          <Tab eventKey="mode" title="Mode" className="text-dark mb-1">
+          <Tab eventKey="mode" title="Mode" className="text-dark mb-1" >
             <ERGMActions />
           </Tab>
           {/* <Tab eventKey="settings" title="Settings">

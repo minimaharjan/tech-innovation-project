@@ -5,6 +5,7 @@ export const initialState = {
     modeOption: "",
     showModeModal: false,
     showParameterModal:false,
+    tabOption:"files",
     
 };
 
@@ -24,7 +25,11 @@ const reducer = (state=initialState, action) => {
         ...state, 
         showParameterModal: action.payload.showParameterModal, 
     };
-
+    case 'SETTABOPTION':
+      return { 
+        ...state, 
+        tabOption: action.payload.tabOption, 
+    };
     
     default:
       return state;
