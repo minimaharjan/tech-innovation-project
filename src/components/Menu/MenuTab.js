@@ -21,11 +21,20 @@ function MenuTab(props) {
     props.onCSVLoad(networkData)
   }
 
-  const handleHelp=()=>{
-    let result={
-      showHelpModal: true
+  const handleHelp=(value)=>{
+    console.log(value)
+    if(value==="help"){
+      let result={
+        showHelpModal: true
+      }
+      dispatch({type:'SETHELP', payload:result});
+    }else{
+      let result={
+        showHelpModal: false
+      }
+      dispatch({type:'SETHELP', payload:result});
     }
-    dispatch({type:'SETHELP', payload:result});
+    
   }
 
   return (
@@ -36,8 +45,9 @@ function MenuTab(props) {
           transition={false}
           id="uncontrolled-tab-example"
           className="text-dark mb-1"
+          onSelect={handleHelp}
         >
-          <Tab eventKey="files" title="Files" className="mb-1">
+          <Tab eventKey="files" title="Files" value="files" className="mb-1">
             <Stack direction="horizontal">
               {/* <Button
                 className="p-2"
@@ -76,7 +86,7 @@ function MenuTab(props) {
 
             </Stack>
           </Tab>
-          <Tab eventKey="mode" title="Mode" className="text-dark mb-1 mode tab">
+          <Tab eventKey="mode" title="Mode" value="mode" className="text-dark mb-1 mode tab">
             <ERGMActions />
           </Tab>
           {/* <Tab eventKey="settings" title="Settings">
@@ -85,15 +95,15 @@ function MenuTab(props) {
           {/* <Tab eventKey="help" title="Help">
             Tab content for Help and Manual
           </Tab> */}
-          <Tab eventKey="help" title="Help" >
+          <Tab eventKey="help"  title="Help" value="help">
           
-          <Button
+          {/* <Button
           className="p-2 custom-button"
           variant="outline-danger"
           size="sm"
           onClick={handleHelp}>
           <span className="btn-text">Help</span>
-          </Button>
+          </Button> */}
 
           </Tab>
         </Tabs>

@@ -119,9 +119,17 @@ function MainPage() {
           />
 
         </Row>
+        
+          
 
 
         <Row className="border-top p-0 h-100">
+        {
+            state.showHelpModal &&
+            
+            <Help/>
+           
+          }
           <Col xs={12} className="p-2 h-100">
             {
               showGraph
@@ -179,6 +187,8 @@ function MainPage() {
             showModeModal={state.showModeModal}
             />
           ):[]}
+          
+
           {
             state.showParameterModal &&
             <Parameters
@@ -186,11 +196,8 @@ function MainPage() {
             />
           }
 
-          {
-            state.showHelpModal &&
-           <Help/>
-          }
-
+          
+          
         </Row>
       </Container>
   );
