@@ -73,13 +73,13 @@ function MenuTab(props) {
               >Close Current Graph</Button>
             </Stack>
           </Tab>
-          <Tab eventKey="mode" title="Mode" className="text-dark mb-1" >
+          <Tab eventKey="mode" title="Mode" value="mode"className="text-dark mb-1" >
             <ERGMActions />
           </Tab>
           {/* <Tab eventKey="settings" title="Settings">
             Tab content for Settings
           </Tab> */}
-          <Tab eventKey="help" title="Help">
+          <Tab eventKey="help" title="Help" value="mode">
             Tab content for Help and Manual
           </Tab>
         </Tabs>
