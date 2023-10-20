@@ -56,7 +56,8 @@ function NetworkGraph(props) {
         force: {
           edgeLength: 200,
           repulsion: 1000,
-          gravity: 1
+          gravity: 1,
+          friction: 0.2
         },
         lineStyle: {
           // color: 'source',
