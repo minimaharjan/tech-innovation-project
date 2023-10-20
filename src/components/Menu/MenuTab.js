@@ -21,21 +21,32 @@ function MenuTab(props) {
     props.onCSVLoad(networkData)
   }
 
-  const handleHelp=(value)=>{
-    console.log(value)
+  const handleTabOption=(value)=>{
+    // props.setCurrentTab(value)
+    let result2={
+      tabOption: value,
+    }
+    dispatch({type: 'SETTABOPTION', payload:result2})
+   
     if(value==="help"){
       let result={
         showHelpModal: true
+        
       }
       dispatch({type:'SETHELP', payload:result});
     }else{
       let result={
         showHelpModal: false
+        
       }
       dispatch({type:'SETHELP', payload:result});
     }
+
+  
+    
     
   }
+
 
   return (
     <Row className="pe-0">
@@ -45,7 +56,7 @@ function MenuTab(props) {
           transition={false}
           id="uncontrolled-tab-example"
           className="text-dark mb-1"
-          onSelect={handleHelp}
+          onSelect={handleTabOption}
         >
           <Tab eventKey="files" title="Files" value="files" className="mb-1">
             <Stack direction="horizontal">

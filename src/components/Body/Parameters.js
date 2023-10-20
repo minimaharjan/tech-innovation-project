@@ -151,7 +151,7 @@ function Parameters(props) {
 
         <Modal.Body >
         {/* hover style={{ height: '300px' }} className="overflow-auto" */}
-        <Table striped bordered style={{ display: 'block', height: '300px', overflowY: 'scroll' }}>
+        <Table striped bordered style={{ display: 'block', height: '400px', overflowY: 'scroll' }}>
       <thead sticky="top">
         <tr>
           <th>S.N.</th>
