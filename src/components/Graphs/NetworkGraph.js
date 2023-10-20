@@ -51,6 +51,7 @@ function NetworkGraph(props) {
         circular: {
           rotateLabel: true
         },
+        zoom: 0.5,
         // Color of nodes
         // color: "#ff",
         force: {
