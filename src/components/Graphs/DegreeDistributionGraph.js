@@ -24,6 +24,14 @@ function DegreeDistributionGraph(props) {
     tooltip: {
       trigger: 'axis'
     },
+    toolbox: {
+      show: true,
+      feature: {
+        magicType: {
+          type: ['line', 'bar']
+        }
+      }
+    },
     series: [
       {
         data: props.degreeOccurenceList,
