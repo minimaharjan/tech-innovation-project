@@ -27,6 +27,13 @@ OR
 ```bash
 yarn run package
 ```
+### Packaging for Production with Option
+```
+npm run package -- --[option]
+```
+```
+yarn run package -- --[option]
+```
 
 ## Docs
 
