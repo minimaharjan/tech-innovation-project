@@ -20,6 +20,7 @@ import { useAppContext } from './../context/Provider';
 import ModeModal from 'components/Body/ModeModal';
 import Parameters from 'components/Body/Parameters';
 import Help from 'components/Menu/Help';
+import NetworkGraphOptions from 'components/Graphs/NetworkGraphOptions';
 
 function MainPage() {
   const { state, dispatch } = useAppContext();
@@ -34,6 +35,19 @@ function MainPage() {
   const [isGraphDirected, setIsGraphDirected] = useState(false);
   const [showNetworkGraphOptionSetModal, setNetworkGraphOptionSetModal] =
     useState(false);
+
+  const [graphOptions, setGraphOptions] = useState({
+    layout: 'force'
+  });
+  // Graph Options
+  const [graphLayout, setGraphLayout] = useState('force');
+  const [graphNodeShape, setGraphNodeShape] = useState('circle');
+
+
+  const [showGraphOptionsMenu, setShowGraphOptionsMenu] = useState(false);
+  const toggleGraphOptionsMenu = () => {
+    setShowGraphOptionsMenu(!showGraphOptionsMenu)
+  }
 
   const [graphStats, setGraphStats] = useState({});
   const[currentTab, setCurrentTab]= useState("")
@@ -130,16 +144,30 @@ function MainPage() {
         <Row className="border-top p-0 h-100">
         <Col xs={12} className="p-2 h-100">
           {showGraph && state.tabOption === "files" ?(
-            <NetworkGraph
-              nodes={graphNodes}
-              edges={graphEdges}
-              nodeGroupingAttribute={graphGroupingAttribute}
-              nodeLinkingAttribute={graphLinkingAttribute}
-              dimensions={graphDimensions}
-              directed={isGraphDirected}
-              emphasis={true}
-              graphStats={graphStats}
-            />
+            <>
+              <NetworkGraph
+                nodes={graphNodes}
+                edges={graphEdges}
+                nodeGroupingAttribute={graphGroupingAttribute}
+                nodeLinkingAttribute={graphLinkingAttribute}
+                dimensions={graphDimensions}
+                directed={isGraphDirected}
+                emphasis={true}
+                graphStats={graphStats}
+                layout={graphLayout}
+                nodeShape={graphNodeShape}
+                toggleGraphOptionsMenu={toggleGraphOptionsMenu}
+              />
+              <NetworkGraphOptions
+                show={showGraphOptionsMenu}
+                onHide={() => setShowGraphOptionsMenu(false)}
+                currentLayout={graphLayout}
+                setCurrentLayout={(layout) => setGraphLayout(layout)}
+                currentNodeShape={graphNodeShape}
+                setCurrentNodeShape={(nodeShape) => setGraphNodeShape(nodeShape)}
+              />
+            </>
+
           ):[]}
 
 

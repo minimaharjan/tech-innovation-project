@@ -52,19 +52,13 @@ function NetworkGraph(props) {
           rotateLabel: true
         },
         zoom: 0.5,
-        // Color of nodes
-        // color: "#ff",
         force: {
           edgeLength: 200,
           repulsion: 1000,
           gravity: 1,
           friction: 0.2
         },
-        lineStyle: {
-          // color: 'source',
-          // curveness: 0.3
-        },
-        // symbol: 'triangle', /* 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none' */
+        symbol: props.nodeShape || 'circle', /* 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none' */
         // Enable this if directed
         edgeSymbol: props.directed ? ['none', 'arrow']: ['none', 'none'],
         data: props.nodes,
@@ -84,10 +78,6 @@ function NetworkGraph(props) {
         }),
 
         roam: true,
-        // label: {
-        //   position: 'right',
-        //   formatter: '{b}'
-        // },
       }
     ]
   };
@@ -97,6 +87,7 @@ function NetworkGraph(props) {
                 option={graphOptions}
                 style={{"height": '100%'}}
             />
+            <Button size="sm" onClick={props.toggleGraphOptionsMenu} variant="warning" id="graph-options-btn" data-html2canvas-ignore="true">Update Graph Options</Button>
             <Button size="sm" onClick={() => {setShowGraphStatModal(true)}} variant="warning" id="graph-statistics-btn" data-html2canvas-ignore="true">Show Graph Statistics</Button>
 
             {
