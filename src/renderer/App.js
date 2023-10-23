@@ -118,9 +118,6 @@ function MainPage() {
     setIsGraphDirected(false);
   };
 
-  
-  
-
   return (
       <Container fluid className="h-100 d-flex flex-column">
         <Row>
@@ -130,24 +127,7 @@ function MainPage() {
           />
 
         </Row>
-        
-          
-
-
         <Row className="border-top p-0 h-100">
-          
-          
-      
-          {
-              state.showHelpModal && state.tabOption ==="help"?
-            
-              <Help/>:[]
-            
-            
-          
-          }
-         
-         
         <Col xs={12} className="p-2 h-100">
           {showGraph && state.tabOption === "files" ?(
             <NetworkGraph
@@ -161,6 +141,13 @@ function MainPage() {
               graphStats={graphStats}
             />
           ):[]}
+
+
+          {/* Help Content */}
+          {
+              state.showHelpModal && state.tabOption ==="help"?
+              <Help/>:[]
+          }
         </Col>
 
         {showNetworkGraphOptionSetModal && state.tabOption === "files" ?(
@@ -209,7 +196,6 @@ function MainPage() {
             showModeModal={state.showModeModal}
             />
           ):[]}
-          
 
           {
             state.showParameterModal &&
@@ -221,10 +207,6 @@ function MainPage() {
             </>
           ):[]
         }
-
-        
-          
-          
         </Row>
       </Container>
   );
