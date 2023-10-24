@@ -74,7 +74,7 @@ function ModeModal(props) {
           <Button variant="secondary" 
           onClick={handleClose}
           >Close</Button>
-          <Button variant="primary">Save changes</Button>
+          <Button variant="primary" onClick={handleClose}>Save changes</Button>
         </Modal.Footer>
       {/* </Modal.Dialog> */}
       </Modal>
