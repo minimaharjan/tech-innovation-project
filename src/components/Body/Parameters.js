@@ -171,24 +171,31 @@ function Parameters(props) {
           <Form.Check
           type="checkbox"
           id="Include1"
+          value={option}
+          
           />
         </td>
         <td>
         <Form.Check
           type="checkbox"
           id="Fixed1"
+          value={option}
           />
         </td>
         <td>
           <Form.Control
           type="number"
           id="λ1"
+          placeholder='2'
+          value={option}
           />
           </td>
         <td>
           <Form.Control
           type="number"
-          id="λ1"
+          id="value1"
+          placeholder='0'
+          value={option}
           />
           </td>
         
