@@ -23,17 +23,17 @@ function Simulation() {
       </InputGroup>
       <InputGroup className="mb-2">
         <InputGroup.Text >Burn-in</InputGroup.Text>
-        <Form.Control aria-label="Text input with radio button" placeholder='' type="number"/>
+        <Form.Control aria-label="Text input with radio button" placeholder='100000' value ="100000" type="number"/>
         
       </InputGroup>
       <InputGroup className="mb-2">
         <InputGroup.Text >Iterations</InputGroup.Text>
-        <Form.Control aria-label="Text input with radio button" placeholder='' type="number"/>
+        <Form.Control aria-label="Text input with radio button" placeholder='1000000' value ="1000000" type="number"/>
         
       </InputGroup>
       <InputGroup className="mb-2">
         <InputGroup.Text >Samples</InputGroup.Text>
-        <Form.Control aria-label="Text input with radio button" placeholder='' type="number"/>
+        <Form.Control aria-label="Text input with radio button" placeholder='1000' value="1000" type="number"/>
         
       </InputGroup>
     </>

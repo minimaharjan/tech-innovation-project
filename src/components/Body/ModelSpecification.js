@@ -47,6 +47,7 @@ function ModelSpecification() {
           <Form.Control 
           id="Staring Density"
           label="Starting Density"
+          placeholder="0"
           type="number"/>
          
         </div>

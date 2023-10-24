@@ -171,24 +171,31 @@ function Parameters(props) {
           <Form.Check
           type="checkbox"
           id="Include1"
+          value={option}
+          
           />
         </td>
         <td>
         <Form.Check
           type="checkbox"
           id="Fixed1"
+          value={option}
           />
         </td>
         <td>
           <Form.Control
           type="number"
           id="λ1"
+          placeholder='2'
+          value={option}
           />
           </td>
         <td>
           <Form.Control
           type="number"
-          id="λ1"
+          id="value1"
+          placeholder='0'
+          value={option}
           />
           </td>
         
@@ -207,7 +214,7 @@ function Parameters(props) {
           <Button variant="secondary" 
           onClick={handleClose}
           >Close</Button>
-          <Button variant="primary">Save changes</Button>
+          <Button variant="primary" onClick={handleClose}>Save changes</Button>
         </Modal.Footer>
       {/* </Modal.Dialog> */}
       </Modal>
