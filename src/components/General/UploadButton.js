@@ -18,7 +18,9 @@ function UploadButton(props) {
       if(props.showFileName) {
         setFileName(inputRef.current?.files[0].name)
       }
-      props.onSuccessFullUpload(uploaded_file)
+      if (props.onSuccessFullUpload) {
+        props.onSuccessFullUpload(uploaded_file)
+      }
     }
   }
 
