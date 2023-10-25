@@ -3,11 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function Help() {
   return (
-    <Container fluid="md">
-      <Row>
+    <Container fluid className="h-100">
+      <Row className='h-100 overflow-auto'>
         <Col xs={12} md={3}>
           {/* -------------------------------- Table of Contents -------------------------------------- */}
-          <div style={{ position: "sticky", top: 0, height: "100vh", overflowY: "auto", paddingRight: "20px" }}>
+          <div style={{ position: "sticky", top: 0, height: "100%", overflowY: "auto", paddingRight: "20px" }}>
             <h2>Table of Contents</h2>
             <ul>
               <li><a href="#about-snaa">About SNAA</a></li>
@@ -24,20 +24,20 @@ function Help() {
             </ul>
           </div>
         </Col>
-        <Col xs={12} md={9}>
+        <Col xs={12} md={9} className="h-100 overflow-auto" style={{ scrollBehavior: "smooth"}}>
           {/* -------------------------------- About SNAA -------------------------------------- */}
           <h1 id="about-snaa">About SNAA</h1>
           <p align="justify">The Social Network Analysis Application (SNAA) is a cross-platform application for statistical analysis of Exponential Random Graph Models (ERGMs) with graphic visualisation capabilities. The architecture is based on SNA Sandbox’s existing software MPNet, for  statistical analysis capabilities and VPNet graphic statics visualisation of ERGMs. SNAA is designed with one-mode modelling. SNAA is a prototype with one major functionality: <i>Simulation</i>. There are 3 additional functionalities that are not operational at the present, these are: Estimation, Goodness of Fit, and Bayesian Estimation.</p>
 
-          <b>Simulation:</b><br></br> 
+          <b>Simulation:</b><br></br>
           <p align="justify">Simulating a network or attribute distributions with specified model parameter values.</p>
 
           <b>Estimation:</b><br></br>
           <p align="justify">Estimating specified ERGM parameters for a given network using Markov Chain Monte Carlo Maximum Likelihood Estimation (MCMCMLE) (Snijders, 2002), or Bayesian approximation algorithms with and without missing data (Caimo and Friel, 2011; Koskinen et al, 2011; 2013).</p>
-          
+
           <b>Goodness of Fit:</b><br></br>
           <p align="justify">Testing the Goodness of fit for statistical methods used to assess how well a specific model, distribution, or hypothesis fits observed data with the specified parameters.</p>
-          
+
           <b>Bayesian Estimation:</b><br></br>
           <p align="justify">Based on Bayes' theorem, Bayesian estimation combines prior knowledge or beliefs with observed data to provide an understanding of unknown parameters or the underlying probability distribution. </p>
 
@@ -60,11 +60,11 @@ function Help() {
           </ul>
           <p align="justify">When a CSV file containing the correct network data and edges are uploaded, a visualised network will be displayed.</p>
 
-        
+
           {/* ... */}
           {/* -------------------------------- Files -------------------------------------- */}
           <h2 id="files">Files</h2>
-          
+
           <p align="justify">The “File” tab within the navigation is responsible for the network visualisation. Two buttons are present under this option being “Upload Network Data” and “Close Current Graph”. “Upload Network Data” can allow the network to be visualised, “Close Current Graph” ceases the visualisation if one is opened.</p>
 
           {/* ... */}
@@ -128,10 +128,10 @@ function Help() {
               <b>“Simulation”</b> can generate synthetic networks that resemble structural properties of observed network's.
             </li>
             <li>
-              <b>“Estimation”</b> involves the identification of model parameters that best describe the observed network data, underlying processes governing network formation. 
+              <b>“Estimation”</b> involves the identification of model parameters that best describe the observed network data, underlying processes governing network formation.
             </li>
             <li>
-              <b>“GOF”</b> assessment helps determine how well the ERGM data fits with the observed network data. It helps evaluate the adequacy of the model in capturing the network's structural features. 
+              <b>“GOF”</b> assessment helps determine how well the ERGM data fits with the observed network data. It helps evaluate the adequacy of the model in capturing the network's structural features.
             </li>
             <li>
               <b>“Bayesian estimation”</b> aims to estimate the  parameters of a statistical model while considering the uncertainty associated with these estimates. The framework uses probabilistic reasoning about unknown quantities, taking into account both prior information and the likelihood of observed data.
@@ -147,7 +147,7 @@ function Help() {
           <h4>Simulation Options</h4>
 
           <p align="justify">Enabling the "<b>Sample networks</b>" option allows the program to create sample graphs in an adjacency matrix format. It also provides additional graph statistics like degree distributions and global clustering. The sample files are designed to work with the Pajek program, making it easier to visualise the simulated samples. However, generating a large number of samples (specified by the 'Samples' setting) may take a considerable amount of time depending on the computer specifications.</p>
-          
+
           <p align="justify">When the "<b>Sample degree distribution</b>" option is checked, SNAA will create degree distributions for the simulated samples. The information is provided in a tab-delimited format, along with the standard deviation and skewness of these degree distributions.</p>
 
           <p align="justify">“<b>Burn-in</b>” is the initial part of the simulation where the system is getting itself ready to match your desired setup based on the rules you've set. The burn-in requirements can vastly vary depending on the network's size and the number of parameters used. Analysing the output files can reveal whether the simulation has achieved a stable state and if the burn-in period is satisfactory (For example, the number connections consistently around a mean within a stationary graph distribution).</p>
@@ -170,7 +170,7 @@ function Help() {
           {/* ... */}
           {/* -------------------------------- Estimation -------------------------------------- */}
           <h3 id="estimation">Estimation</h3>
-          
+
           <p align="justify">When estimating ERGM parameters within the SNAA, users are required to define the network data to model, provide the ERGM specification, and configure certain estimation options. The MCMCMLE (Markov Chain Monte Carlo Maximum Likelihood Estimation) algorithm offers various customizable settings and options, and making modifications to these settings can assist in achieving model convergence.</p>
 
           <h4>Estimation Options</h4>
@@ -193,7 +193,7 @@ function Help() {
           {/* ... */}
           {/* -------------------------------- Goodness of Fit -------------------------------------- */}
           <h3 id="goodness-of-fit">Goodness of Fit</h3>
-          
+
           <p align="justify">Once an ERGM has successfully converged, you can check the goodness of fit (GOF) by comparing the simulated data of the estimated model against the actual network it represents. You can explore various network configurations, not just the ones in the initial model. To initiate a model GOF session, select “Mode” within the navigation bar and choose the “GOF” radio button.</p>
 
           <p align="justify">GOF maintains the same options as Simulation (refer to “Simulation Options” for option description), with the exception of required network data and parameter values. Under the “Files” tab within the navigation bar, press the “Upload Network Data” option and select a CSV file. The “Select Network Graph Options” will prompt, select the appropriate options and upload the required network edge files. Select “Save Setting” to upload the graph. To select the required parameters, select “Model Specification” within the navigation bar and choose “Parameters”.</p>
@@ -228,13 +228,13 @@ function Help() {
           {/* ... */}
           {/* -------------------------------- Bayesian Estimation -------------------------------------- */}
           <h3 id="bayesian-estimation">Bayesian Estimation</h3>
-          
+
           <p align="justify">SNAA plans to employs a variation of the Bayesian estimation algorithm introduced by Camio and Friel in 2009, as described in Koskinen et al. (2013). In contrast to MCMCMLE that provides point estimates, Bayesian estimation produces posterior distributions of model parameters.  Posterior distribution refers to the probability distribution of model parameters, or unobserved variables after taking into account both prior information and observed data. Instead of utilising MLEs and Standard Errors, SNAA employs Point Estimates and Measures of Uncertainty by computing averages and standard errors from this distribution. This approach eliminates the need for the approximations used in “Iterations in Phase 3”. However, it's crucial to assess "mixing," which refers to how effectively the algorithm samples from the posterior.</p>
 
           <h4>Bayesian Estimation Options</h4>
-          
+
           {/* Whole section is copied from MPNet Manual */}
-          
+
           <p align="justify"><b>Parameter burn-in</b>: similar to burn-in for simulations, the starting parameters may be considered extreme from the posterior parameter distribution. The burn-in will discard the specified number of parameter updates at the beginning of the estimation.</p>
 
           <p align="justify"><b>Proposal scaling</b>: similar to a-values in maximum likelihood estimations (MLEs), the proposal scaling (or 'step-size constant'; Tierney, 1994) is a multiplier for the sizes of parameter updates. Greater scaling will cover greater range for parameter proposals; however, greater scaling may also reduce the number of accepted parameter proposals as part of the posterior. The proposal distribution in the Metropolis algorithm is Np(θ,S), where θ is the current value, S=c/√(1+p) Σ, and Σ is some estimate of the variance-covariance matrix of the posterior distribution. In this expression c is the 'proposal scaling'. </p>
@@ -246,7 +246,7 @@ function Help() {
           <p align="justify"><b>Max. estimation runs, Do GOF at convergence</b> and <b>Generate GCD</b> at convergence: they are not applicable in Bayesian estimations.</p>
 
           <p align="justify"><b>Maximum lag (SACF)</b>: determines the largest lag (distance) for which the sample autocorrelation function for the estimated posterior is. In order for the effective sample size (ESS) to be reliable, the autocorrelation at the Maximum lag has to be sufficiently close to zero (as a rule of thumb, smaller than 0.05 in absolute value). The lag at which the SACF value is approximately zero gives the number of parameter draws you need to discard in-between every successive parameter value that you base your posterior inference on. For example, if the SACF at lag 100 is approximately zero, then you need an MCNC sample size of 100,000 to get 1000 independent draws from the posterior distribution. If the SACF at lag 100 is greater than, say, 0.4 you need to modify the parameter proposals by increasing the 'proposal scaling'.
-          
+
           <br></br> <br></br>
           There are several possible matrices we may apply to Bayesian estimation which is used for determining the ‘direction’ of parameter updates. There are four options approximating Σ, which is used to set the proposal variance-covariance matrix through S=c/√(1+p) Σ.
 

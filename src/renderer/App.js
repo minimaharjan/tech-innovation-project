@@ -141,7 +141,7 @@ function MainPage() {
           />
 
         </Row>
-        <Row className="border-top p-0 h-100">
+        <Row className="border-top p-0 h-100" style={{overflow: state.tabOption ==="help" ? 'hidden': 'auto'}}>
         <Col xs={12} className="p-2 h-100">
           {showGraph && state.tabOption === "files" ?(
             <>
