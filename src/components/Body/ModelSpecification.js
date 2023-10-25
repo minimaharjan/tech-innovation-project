@@ -57,6 +57,7 @@ function ModelSpecification() {
             id="Staring Density"
             label="Starting Density"
             placeholder="0"
+            defaultValue='0'
             type="number"/>
 
           </div>

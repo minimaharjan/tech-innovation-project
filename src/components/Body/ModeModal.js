@@ -49,7 +49,7 @@ function ModeModal(props) {
             <Col xs={6} md={4}>
           <InputGroup className="mb-2">
         <InputGroup.Text >Node A</InputGroup.Text>
-        <Form.Control aria-label="Text input with radio button" placeholder='0' type="number" value="0"/>
+        <Form.Control aria-label="Text input with radio button" placeholder='0' type="number" defaultValue="0"/>
         
       </InputGroup>
       </Col>
