@@ -1,6 +1,20 @@
-import { Modal, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 
 function NetworkAttributeCovariateModal(props) {
+  const [selectedAttributes, setSelectedAttributes] = useState([]);
+
+  const addAttribute = (attribute) => {
+    // TODO: Add check if exists
+    setSelectedAttributes.append(attribute)
+  }
+
+  const removeAttribute = (attribute) => {
+
+    // TODO: find index and remove
+    // TODO: Add check if exists
+  }
+
   return (
     <Modal
       show={props.show}
@@ -17,10 +31,44 @@ function NetworkAttributeCovariateModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+
         {/* Include column, attribute name, attribute type that has 3 columns */}
         {
           props.attributes[0].map((attr, index) =>
-            <div key={index}>{attr}</div>
+          <Row>
+            <Col xs={4}>
+              <Form.Check
+                key={index}
+                type="checkbox"
+                id={`checkbox-attr-${index}`}
+                label={attr}
+              />
+            </Col>
+            <Col xs={8}>
+            <Form.Check
+              inline
+              label="Binary"
+              name={`group-${index}`}
+              type="radio"
+              id={`inline-${index}-1`}
+            />
+            <Form.Check
+              inline
+              label="Categorical"
+              name={`group-${index}`}
+              type="radio"
+              id={`inline-${index}-2`}
+            />
+            <Form.Check
+              inline
+              label="Continous"
+              name={`group-${index}`}
+              type="radio"
+              id={`inline-${index}-3`}
+            />
+            </Col>
+          </Row>
+
           )
         }
       </Modal.Body>
