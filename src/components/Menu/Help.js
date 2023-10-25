@@ -1,5 +1,18 @@
 import React from 'react';
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import simulation from '../../../assets/images/simulation.jpg';
+import uploadGraphOpen from '../../../assets/images/uploadGraphOpen.png';
+import uploadGraph from '../../../assets/images/uploadGraph.jpg';
+import networkGraph from '../../../assets/images/networkGraph.jpg';
+import networkGraphTwo from '../../../assets/images/networkGraphTwo.jpg';
+import graphStats from '../../../assets/images/graphStats.jpg';
+import parametersNetwork from '../../../assets/images/parameters.jpg';
+import simulationGraph from '../../../assets/images/simulation.jpg';
+import estimation from '../../../assets/images/estimation.jpg';
+import GOF from '../../../assets/images/GOF.jpg';
+import BE from '../../../assets/images/BE.jpg';
+import graphSettings from '../../../assets/images/graphSettings.jpg';
+
 
 function Help() {
   return (
@@ -12,15 +25,23 @@ function Help() {
             <ul>
               <li><a href="#about-snaa">About SNAA</a></li>
               <li><a href="#setup-snaa">Setup SNAA</a></li>
+              
               <li><a href="#files">Files</a></li>
-              <li><a href="#start-snaa-visualization-session">Start SNAA Visualization Session</a></li>
-              <li><a href="#network-graph-options">Network Graph Options</a></li>
-              <li><a href="#network-graph-statistics">Network Graph Statistics</a></li>
+              <ul>
+                <li><a href="#start-snaa-visualization-session">Start SNAA Visualization Session</a></li>
+                <li><a href="#network-graph-options">Network Graph Options</a></li>
+                <ul>
+                  <li><a href="#network-graph-statistics">Network Graph Statistics</a></li>
+                  <li><a href="#update-graph-options">Update Graph Options</a></li>
+                </ul>
+              </ul>
               <li><a href="#modes">Modes</a></li>
-              <li><a href="#simulation">Simulation</a></li>
-              <li><a href="#estimation">Estimation</a></li>
-              <li><a href="#goodness-of-fit">Goodness of Fit</a></li>
-              <li><a href="#bayesian-estimation">Bayesian Estimation</a></li>
+              <ul>
+                <li><a href="#simulation">Simulation</a></li>
+                <li><a href="#estimation">Estimation</a></li>
+                <li><a href="#goodness-of-fit">Goodness of Fit</a></li>
+                <li><a href="#bayesian-estimation">Bayesian Estimation</a></li>
+              </ul>
             </ul>
           </div>
         </Col>
@@ -72,11 +93,15 @@ function Help() {
           <h3 id="start-snaa-visualization-session">Start SNAA Visualization Session</h3>
           <p align="justify">Select the option “Upload Network Data” under the “Files” navigation option. SNAA can only accept CSV formatted datasets. Within the prompt box, select the desired dataset and press “Open”.</p>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={uploadGraphOpen} fluid />
+          <br></br><br></br>
+          
 
           <p align="justify">Visualisation options should prompt. Five options are available being: an one and off toggle for “Directed Graph”, a mandatory “Node Linking Attribute”, optional “Node Grouping Attribute” and “Label Column for Nodes”, and the required “Edge/Link CSV File”. During this prototype, nodes “Linking Attribute”, “Grouping Attribute”, and “Label Column for Nodes” should not match.</p>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={uploadGraph} fluid />
 
           <ul align="justify">
             <li>
@@ -98,15 +123,20 @@ function Help() {
 
           <p align="justify">Once the chosen options have been selected, press “Save Setting” to upload the graph. The network graph will now be visualised on the main interface.</p>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={networkGraph} fluid />
 
 
           {/* ... */}
           {/* -------------------------------- Network Graph Options -------------------------------------- */}
           <h3 id="network-graph-options">Network Graph Options</h3>
-          <p align="justify">Uploaded graphs will be displayed on the home page. Hovering over a node within the graph will display a close interaction with other nodes. The generated graph may have slight visual variations depending on whether the "Node Grouping Attribute" or "Label Column for Nodes" is selected. If the "Node Grouping Attribute" is selected, a group legend will appear above the graph. Groups can be removed from the graph by clicking the colour-coded group within the legend, and the group can be restored by selecting the greyed-out group. To capture the current graph's position within the application, press the [Save Image symbol]. For a full-screen preview of the graph, press the [Eyeball Symbol]. Detailed graph statistics can be accessed through the "Show Graph Statistics" option.</p>
+          <p align="justify">Uploaded graphs will be displayed on the home page. Hovering over a node within the graph will display a close interaction with other nodes. The generated graph may have slight visual variations depending on whether the "Node Grouping Attribute" or "Label Column for Nodes" is selected. If the "Node Grouping Attribute" is selected, a group legend will appear above the graph. Groups can be removed from the graph by clicking the colour-coded group within the legend, and the group can be restored by selecting the greyed-out group. To capture the current graph's position within the application, press the [Save Image symbol]. Detailed graph statistics can be accessed through the "Show Graph Statistics" option.</p>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={networkGraphTwo} fluid />
+          
+
           {/* ... */}
           {/* -------------------------------- Network Graph Statistics -------------------------------------- */}
           <h4 id="network-graph-statistics">Network Graph Statistics</h4>
@@ -114,9 +144,18 @@ function Help() {
 
           <p align="justify">Pressing "Show Graph Statistics" opens a window that describes the "Network Graph Statistics." It displays the "Graph Summary," "Graph Connectivity" (if the graph is directed), and "Graph Clustering." Below the statistics, there is a bar graph illustrating the network's degree distribution, and additional graphs may be included below based on the selected network graph options.</p>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={graphStats} fluid />
 
           <p align="justify">Pressing "Download Graph Statistics" will open a "save as" window, enabling users to save the descriptive statistics. The file will be saved as a PDF, which will include a screenshot of the graph network, along with all the content within the "Network Graph Statistics."</p>
+
+
+          {/* -------------------------------- Network Graph Statistics -------------------------------------- */}
+          <h4 id="update-graph-options">Update Graph Options</h4>
+
+          {/*<p align="justify"><b>Description here</b></p>
+          <p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={graphSettings} fluid />
 
           {/* ... */}
           {/* -------------------------------- Modes -------------------------------------- */}
@@ -138,7 +177,10 @@ function Help() {
             </li>
           </ul>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={parametersNetwork} fluid />
+
+
           {/* ... */}
           {/* -------------------------------- Simulation -------------------------------------- */}
           <h3 id="simulation">Simulation</h3>
@@ -161,12 +203,13 @@ function Help() {
 
           <p align="justify">To initiate the simulation, click on the "<b>Start</b>" button located in the upper right corner of the navigation bar.</p>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={simulationGraph} fluid />
 
-          <h4>Simulation Output</h4>
+          {/*<h4>Simulation Output</h4>
 
           <p align="justify"><b>Description here</b></p>
-          <p align="justify"><b>Screenshot here</b></p>
+          <p align="justify"><b>Screenshot here</b></p>/*}
           {/* ... */}
           {/* -------------------------------- Estimation -------------------------------------- */}
           <h3 id="estimation">Estimation</h3>
@@ -187,6 +230,10 @@ function Help() {
 
           <p align="justify">Upon achieving convergence , “<b>Do GOF at convergence</b>” can conduct a GOF assessment for the model being estimated.</p>
 
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={estimation} fluid />
+
+
           <h4>Estimation Output</h4>
           {/*  */}
           <p align="justify">At present, SNAA does not support the Estimation Mode.</p>
@@ -200,7 +247,8 @@ function Help() {
 
           <p align="justify">During the model parameters selection, clicking the "Select All" button will implement all statistics in the GOF simulation.</p>
 
-          <p align="justify"><b>Screenshot here</b></p>
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={GOF} fluid />
 
           <p align="justify">Once the GOF simulation has concluded, the SNAA will compute t-ratios for all the graph statistics included</p>
 
@@ -259,6 +307,9 @@ function Help() {
           <p align="justify"><b>Nonconditional simulation</b>: the differences between the observed graph and the simulated samples are refined by a covariance matrix generated based on a simulation with the starting parameters.(This is an analogous procedure to the one employed in Phase 1 of the nonBayesian estimation)</p>
 
           <p align="justify"><b>Covariance file</b>: A user defined covariance matrices of the parameters are used to refine the direction of parameter updates. The covariance file is a p by p matrix if there are p parameters in the model. Such covariance files may be obtained based on previous estimations of the same model. MPNet generates such files at the end of estimations with file name e.g. “MySession_varcov.txt”. If this estimate of Σ is close to the true posterior variance-covariance matrix, the proposal scaling c should be in the range of 0.5 to 4.</p>
+
+          {/*<p align="justify"><b>Screenshot here</b></p>*/}
+          <Image src={BE} fluid />
 
           <h4>Bayesian Estimation Output</h4>
           {/*  */}
