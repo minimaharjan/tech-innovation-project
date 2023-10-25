@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 function Simulation() {
+  const [burnin, setBurnin] = useState(100000);
+  const handleNumberChange = (e) => {
+    setBurnin(e.target.value);
+  };
   return (
     <>
     <div>Output Files</div>
@@ -23,17 +27,17 @@ function Simulation() {
       </InputGroup>
       <InputGroup className="mb-2">
         <InputGroup.Text >Burn-in</InputGroup.Text>
-        <Form.Control aria-label="Text input with radio button" placeholder='100000' value ="100000" type="number"/>
+        <Form.Control aria-label="Text input with radio button"  value ={burnin} type="number" onChange={handleNumberChange}/>
         
       </InputGroup>
       <InputGroup className="mb-2">
         <InputGroup.Text >Iterations</InputGroup.Text>
-        <Form.Control aria-label="Text input with radio button" placeholder='1000000' value ="1000000" type="number"/>
+        <Form.Control aria-label="Text input with radio button" placeholder='1000000' defaultValue ="1000000" type="number"/>
         
       </InputGroup>
       <InputGroup className="mb-2">
         <InputGroup.Text >Samples</InputGroup.Text>
-        <Form.Control aria-label="Text input with radio button" placeholder='1000' value="1000" type="number"/>
+        <Form.Control aria-label="Text input with radio button" placeholder='1000' defaultValue="1000" type="number"/>
         
       </InputGroup>
     </>
