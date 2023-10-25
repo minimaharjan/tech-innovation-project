@@ -129,6 +129,7 @@ function MainPage() {
     setGraphLinkingAttribute('');
     setGraphGroupingAttribute('');
     setGraphLabellingAttribute('');
+    setShowGraphOptionsMenu(false);
     setIsGraphDirected(false);
   };
 
